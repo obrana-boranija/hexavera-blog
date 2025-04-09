@@ -4,8 +4,8 @@ description: "Discover how Hexavera integrates with SCADA and MES systems to unl
 author: "Milan Petrović"
 date: "2025-04-10"
 featured_image: "https://images.pexels.com/photos/31212940/pexels-photo-31212940/free-photo-of-textile-worker-operating-machinery-in-factory.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-categories: ["Manufacturing", "Integrations", "Workforce Optimization"]
-tags: ["SCADA", "MES", "Workforce Planning", "Real-Time Data"]
+categories: [Manufacturing, Integrations, Workforce Optimization]
+tags: [SCADA, MES, Workforce Planning, Real-Time Data]
 is_featured: true
 ---
 
