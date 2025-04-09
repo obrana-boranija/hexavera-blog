@@ -1,5 +1,5 @@
 ---
-title: "How Hexavera Bridges SCADA/MES Systems for Smart Manufacturing Workforces"
+title: "How Hexavera Bridges SCADA and MES Systems for Smart Manufacturing Workforces"
 description: "Discover how Hexavera integrates with SCADA and MES systems to unlock real-time workforce optimization and smarter manufacturing operations."
 author: "Milan Petrović"
 date: "2025-04-10"
