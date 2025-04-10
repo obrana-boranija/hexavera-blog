@@ -13,6 +13,46 @@ is_featured: false
 
 Start writing your blog post content here...
 
+```
+private BlogPost BlogPost { get; set; } = new();
+private bool IsLoading { get; set; } = true;
+private bool IsSaving { get; set; }
+private bool IsMetadataPanelVisible { get; set; } = true;
+private bool IsEditFormVisible { get; set; } = true;
+private string? ErrorMessage { get; set; }
+private string? SaveSuccessMessage { get; set; }
+private bool IsNewPost => string.IsNullOrEmpty(FilePath);
+
+private Confirmation? ConfirmationDialog { get; set; }
+
+protected override async Task OnInitializedAsync()
+{
+    if (IsNewPost)
+    {
+        // Initialize new blog post
+        BlogPost = new BlogPost
+            {
+                Metadata = new FrontMatter
+                {
+                    Title = "New Blog Post",
+                    Description = "Enter your post description here",
+                    Author = "Your Name", // Could be loaded from user settings
+                    Date = DateTime.Now.ToString("yyyy-MM-dd"),
+                    Categories = new List<string> { "Uncategorized" },
+                    Tags = new List<string>()
+                },
+                Content = "## Hello World\n\nStart writing your blog post content here..."
+            };
+
+        IsLoading = false;
+    }
+    else
+    {
+        await LoadPost();
+    }
+}
+```
+
 ![alt text](https://example.com/image.jpg)https://example.com)
 
 - Item 1
