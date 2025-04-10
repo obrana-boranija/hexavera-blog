@@ -4,8 +4,8 @@ description: "Explore how Hexavera's native integration with HikVision access co
 author: "Milan Petrović"
 date: "2025-04-10"
 featured_image: "https://images.pexels.com/photos/15049671/pexels-photo-15049671/free-photo-of-close-up-photo-of-a-padlock.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-categories: [Manufacturing, Security, Integrations]
-tags: [HikVision, Access Control, Workforce Security, "anufacturing Compliance]
+categories: ["Manufacturing", "Security", "Integrations"]
+tags: ["HikVision", "Access Control", "Workforce Security", "Manufacturing Compliance"]
 is_featured: true
 ---
 
@@ -74,4 +74,3 @@ Security teams now monitor site occupancy in real-time, while HR automates atten
 By integrating HikVision with Hexavera, manufacturers gain full-spectrum workforce visibility, streamline compliance, and ensure safer operations. This deep connection between access control and workforce management turns security into a proactive business advantage.
 
 > Ready to enhance your factory's security posture? [Book your integration consultation today!](https://hexavera.com/contact)
-
