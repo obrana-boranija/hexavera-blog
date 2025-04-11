@@ -13,6 +13,8 @@ is_featured: true
 
 In high-paced manufacturing environments, physical security and workforce visibility are paramount. Hexavera’s integration with HikVision brings real-time access control directly into your workforce management platform, elevating both safety and operational efficiency.
 
+
+
 ## Why Access Control Matters in Manufacturing
 
 Manufacturing sites handle sensitive equipment, hazardous materials, and complex workflows. A lapse in access control can lead to:
