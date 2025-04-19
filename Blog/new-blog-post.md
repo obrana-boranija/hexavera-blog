@@ -1,63 +1,146 @@
 ---
-title: "New Blog Post"
-description: "Enter your post description here"
-author: "Your Name"
-date: "2025-04-10"
-featured_image: "https://camo.githubusercontent.com/678920e8f8c62e433e03c096612659d81ae96d9befda00d54861379aba81ed5f/68747470733a2f2f63646e2e626f6c6462692e636f6d2f77702f70616765732f64617368626f617264732f68722f68722d656d706c6f7965652d64657461696c732e706e67"
-categories: ["Uncategorized"]
-tags: []
-is_featured: false
+title: "Enhanced Navigation in Blazor: Smooth Page Transitions with ScrollBehavior"
+date: "2024-04-19"
+description: "Discover how to implement a custom navigation interceptor in Blazor to improve user experience with intelligent scroll management."
+tags: ["Blazor", "Web Development", "User Experience", "Navigation", "ScrollBehavior"]
+keywords: ["blazor enhanced navigation", "scroll behavior", "page transitions", "web development tips"]
+slug: enhanced-navigation-interceptor-blazor
 ---
 
-## Hello World
+# Enhanced Navigation in Blazor: Smooth Page Transitions with ScrollBehavior
 
-Start writing your blog post content here...
+## Introduction
 
-```
-private BlogPost BlogPost { get; set; } = new();
-private bool IsLoading { get; set; } = true;
-private bool IsSaving { get; set; }
-private bool IsMetadataPanelVisible { get; set; } = true;
-private bool IsEditFormVisible { get; set; } = true;
-private string? ErrorMessage { get; set; }
-private string? SaveSuccessMessage { get; set; }
-private bool IsNewPost => string.IsNullOrEmpty(FilePath);
+Seamless navigation is a critical aspect of modern web applications. In Blazor, while the framework provides robust routing capabilities, sometimes you need that extra touch to create a truly polished user experience. Enter the `EnhancedNavigationInterceptor` – a lightweight solution to manage page transitions and scroll behavior intelligently.
 
-private Confirmation? ConfirmationDialog { get; set; }
+## The Navigation Challenge
 
-protected override async Task OnInitializedAsync()
-{
-    if (IsNewPost)
+Typical single-page applications (SPAs) often struggle with consistent scrolling behavior during page navigations. Users expect:
+
+- Smooth transitions between pages
+- Predictable scroll positioning
+- Instant or smooth scrolling based on context
+
+Our `EnhancedNavigationInterceptor` addresses these challenges head-on.
+
+## Component Deep Dive
+
+Let's break down the `EnhancedNavigationInterceptor.razor` component:
+
+```csharp
+@((MarkupString)script)
+
+@code {
+    [Parameter] 
+    public ScrollBehavior Behavior { get; set; } = ScrollBehavior.Auto;
+
+    private string GetBehaviorString() => Behavior switch 
     {
-        // Initialize new blog post
-        BlogPost = new BlogPost
-            {
-                Metadata = new FrontMatter
-                {
-                    Title = "New Blog Post",
-                    Description = "Enter your post description here",
-                    Author = "Your Name", // Could be loaded from user settings
-                    Date = DateTime.Now.ToString("yyyy-MM-dd"),
-                    Categories = new List<string> { "Uncategorized" },
-                    Tags = new List<string>()
-                },
-                Content = "## Hello World\n\nStart writing your blog post content here..."
-            };
+        ScrollBehavior.Smooth => "smooth", 
+        ScrollBehavior.Instant => "instant", 
+        ScrollBehavior.Auto => "auto", 
+        _ => "instant"
+    };
 
-        IsLoading = false;
+    private string GetScript() 
+    {
+        var behavior = GetBehaviorString();
+        return $@"
+        <script>
+        (function() {{
+            let currentUrl = window.location.href;
+            Blazor.addEventListener('enhancedload', () => {{
+                let newUrl = window.location.href;
+                if (currentUrl != newUrl) {{
+                    window.scrollTo({{
+                        top: 0, 
+                        left: 0, 
+                        behavior: '{behavior}'
+                    }});
+                }}
+                currentUrl = newUrl;
+            }});
+        }})();
+        </script>";
     }
-    else
+
+    public enum ScrollBehavior 
     {
-        await LoadPost();
+        Auto, 
+        Instant, 
+        Smooth 
     }
 }
 ```
 
-![alt text](https://example.com/image.jpg)https://example.com)
+### Key Features
 
-- Item 1
-- Item 2
-- Item 3
+1. **Flexible Scroll Behavior**
+   - `Auto`: Default browser-determined scrolling
+   - `Instant`: Immediate jump to top
+   - `Smooth`: Animated scroll transition
 
-![alt text](https://cdn.boldbi.com/wp/pages/dashboards/hr/hr-employee-details.png)
+2. **Blazor Event Listening**
+   Uses the `enhancedload` event to detect page changes
 
+3. **URL Comparison**
+   Prevents unnecessary scroll actions when the URL remains unchanged
+
+## Installation and Usage
+
+### NuGet Package
+
+I recommend the following package details:
+- **GitHub Repo Name**: `BlazorEnhancedNavigation`
+- **NuGet Package Name**: `Blazor.EnhancedNavigation`
+
+### Basic Implementation
+
+```razor
+@page "/"
+@using Blazor.EnhancedNavigation.Components
+
+<EnhancedNavigationInterceptor Behavior="ScrollBehavior.Smooth" />
+```
+
+### Advanced Configuration
+
+You can customize the scroll behavior based on your application's needs:
+
+```razor
+<EnhancedNavigationInterceptor Behavior="ScrollBehavior.Instant" />  // For performance-critical pages
+<EnhancedNavigationInterceptor Behavior="ScrollBehavior.Smooth" />   // For content-rich pages
+```
+
+## Performance Considerations
+
+- Minimal overhead
+- Lightweight JavaScript implementation
+- Works with Blazor's enhanced navigation mode
+
+## Browser Compatibility
+
+The component uses standard Web APIs:
+- Supported in all modern browsers
+- Graceful fallback in older browsers
+
+## Potential Improvements
+
+Future iterations could include:
+- Custom scroll offset configuration
+- Per-route scroll behavior
+- Scroll preservation for specific scenarios
+
+## Conclusion
+
+The `EnhancedNavigationInterceptor` demonstrates how small, thoughtful components can significantly improve user experience in Blazor applications.
+
+### Next Steps
+
+- [View Component on GitHub](https://github.com/yourusername/BlazorEnhancedNavigation)
+- [Install NuGet Package](https://www.nuget.org/packages/Blazor.EnhancedNavigation)
+- [Explore Documentation](/docs/enhanced-navigation)
+
+---
+
+Happy coding! 🚀✨
