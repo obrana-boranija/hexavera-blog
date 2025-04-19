@@ -144,10 +144,12 @@ dotnet add package Boranija.Blazor.Navigation
 ```
 
 ### Basic Usage
-Add the component to your MainLayout.razor or App.razor:
+Add the component to your App.razor just below `blazor.web.js`:
 
 ```razor
-<EnhancedNavigationInterceptor />
+<script src="_framework/blazor.web.js"></script>
+
+<EnhancedNavigationInterceptor /> <!-- 👈 Here -->
 ```
 
 ### Customizing Scroll Behavior
