@@ -1,10 +1,13 @@
 ---
 title: "The Future of Workforce Management: How Hexavera Simplifies Complexity"
+author: "Milan Petrović"
 date: "2025-04-18"
 description: "Discover how Hexavera's integrated workforce management platform transforms access control, time tracking, and planning with AI-driven insights and seamless integrations."
 tags: [Workforce Management, Access Control, Time & Attendance, AI Planning, Integrations, Compliance]
 keywords: [workforce management platform, AI workforce planning, access control system, time attendance automation, SCADA integration, labor compliance]
 slug: "future-of-workforce-management"
+is_featured: true
+featured_image: "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3"
 ---
 
 <script type="application/ld+json">
