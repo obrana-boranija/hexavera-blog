@@ -1,28 +1,28 @@
 ---
-title: "The Future of Workforce Management: How Hexavera Simplifies Complexity"
-author: "Milan Petrović"
-date: "2025-04-18"
-description: "Discover how Hexavera's integrated workforce management platform transforms access control, time tracking, and planning with AI-driven insights and seamless integrations."
-tags: [Workforce Management, Access Control, Time & Attendance, AI Planning, Integrations, Compliance]
-keywords: [workforce management platform, AI workforce planning, access control system, time attendance automation, SCADA integration, labor compliance]
-slug: "future-of-workforce-management"
+title: "Enhancing Blazor Navigation: Introducing EnhancedNavigationInterceptor"
+author: "Dejan Demonjić"
+date: "2025-04-19"
+description: "Discover how to implement smooth page transitions in Blazor applications with EnhancedNavigationInterceptor - a lightweight component that automatically manages scroll behavior during navigation."
+tags: [Blazor, Navigation, Web Development, .NET, Component Library]
+keywords: [blazor navigation, scroll behavior, page transitions, enhanced navigation, blazor components, smooth scroll]
+slug: "enhanced-navigation-interceptor"
 is_featured: true
-featured_image: "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3"
+featured_image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3"
 ---
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "The Future of Workforce Management: How Hexavera Simplifies Complexity",
-  "datePublished": "2025-04-18",
-  "author": {"@type":"Person","name":"Milan Petrović"},
-  "publisher": {"@type":"Organization","name":"Hexavera","logo":{"@type":"ImageObject","url":"https://hexavera.com/logo.png"}},
-  "url": "https://hexavera.com/future-of-workforce-management",
-  "description": "Discover how Hexavera's integrated workforce management platform transforms access control, time tracking, and planning with AI-driven insights and seamless integrations.",
+  "headline": "Enhancing Blazor Navigation: Introducing EnhancedNavigationInterceptor",
+  "datePublished": "2025-04-19",
+  "author": {"@type":"Person","name":"Dejan Demonjić"},
+  "publisher": {"@type":"Organization","name":"Dejan Demonjić Blog","logo":{"@type":"ImageObject","url":"https://your-blog-url.com/logo.png"}},
+  "url": "https://your-blog-url.com/enhanced-navigation-interceptor",
+  "description": "Discover how to implement smooth page transitions in Blazor applications with EnhancedNavigationInterceptor - a lightweight component that automatically manages scroll behavior during navigation.",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://hexavera.com/future-of-workforce-management"
+    "@id": "https://your-blog-url.com/enhanced-navigation-interceptor"
   }
 }
 </script>
@@ -36,205 +36,166 @@ featured_image: "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?au
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://hexavera.com/"
+      "item": "https://your-blog-url.com/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Blog",
-      "item": "https://hexavera.com/blog"
+      "item": "https://your-blog-url.com/blog"
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "The Future of Workforce Management",
-      "item": "https://hexavera.com/future-of-workforce-management"
+      "name": "Enhancing Blazor Navigation",
+      "item": "https://your-blog-url.com/enhanced-navigation-interceptor"
     }
   ]
 }
 </script>
 
-# The Future of Workforce Management: How Hexavera Simplifies Complexity
+# Enhancing Blazor Navigation: Introducing EnhancedNavigationInterceptor
 
-Workforce management has evolved — and Hexavera is at the forefront of this transformation. In today's dynamic business environment, managing people, processes, and compliance at scale is more challenging than ever. Hexavera brings a modern, integrated approach to workforce management, helping companies of all sizes move beyond outdated tools and fragmented systems.
+In modern web development, smooth user experiences are crucial. One often overlooked aspect is handling page scroll behavior during navigation in single-page applications. Today, I'm excited to introduce EnhancedNavigationInterceptor, a Blazor component that elegantly solves this challenge.
 
-## Centralized Access Control
+## The Navigation Challenge
 
-Hexavera consolidates physical access points, monitoring entry and exit in real-time. Whether you operate from a single location or across multiple global sites, you gain visibility and control with ease.
+When users navigate between pages in a Blazor application, they might find themselves stuck at their previous scroll position instead of starting at the top of the new page. This creates a jarring experience and forces users to manually scroll up. EnhancedNavigationInterceptor addresses this issue by automatically managing scroll behavior during navigation.
 
-### Key Features:
+## Component Overview
 
-* **Zone-based security** for sensitive areas
-* **Real-time alerts** for unauthorized access
-* **Multi-location administration**
+EnhancedNavigationInterceptor is a lightweight component that:
 
-Our comprehensive Access Control Module serves as the foundation for your overall security strategy. It not only controls who can enter specific areas and when, but maintains a complete record of all access events - critical for security, compliance, and workforce management.
+- Automatically scrolls to the top on page navigation
+- Provides configurable scroll behavior options
+- Integrates seamlessly with Blazor's navigation system
+- Requires minimal setup and configuration
 
-With Hexavera's Entry/Exit Tracking system, you'll have:
+## Implementation
 
-- Precise timestamps when individuals use their credentials
-- Complete chronological records of all access attempts
-- Live views of all access events as they occur
-- Current location status of individuals
-- Immediate alerts for unauthorized access attempts
-- Real-time occupancy tracking
+Here's the complete component implementation:
 
-## Advanced Time & Attendance Tracking
+```razor
+@((MarkupString)script)
 
-Goodbye manual timesheets. Hexavera automates time tracking, shift management, and break compliance, ensuring accurate records and labor law alignment.
+@functions {
+    private MarkupString script => (MarkupString)GetScript();
+}
 
-### Capabilities Include:
+@code {
+    [Parameter]
+    public ScrollBehavior Behavior { get; set; } = ScrollBehavior.Auto;
 
-* **Flexible shift definitions**
-* **Automatic overtime calculations**
-* **Mobile clock-in/out**
+    private string GetBehaviorString()
+    {
+        return Behavior switch
+        {
+            ScrollBehavior.Smooth => "smooth",
+            ScrollBehavior.Instant => "instant",
+            ScrollBehavior.Auto => "auto",
+            _ => "instant"
+        };
+    }
 
-The Time & Attendance Module serves as the central system for workforce time management, ensuring accurate payroll calculations and labor law compliance. From basic clock in/out management to complex leave request handling, every aspect of employee time is meticulously recorded and optimized.
+    private string GetScript()
+    {
+        var behavior = GetBehaviorString();
+        return $@"
+            <script>
+                (function() {{
+                    let currentUrl = window.location.href;
+                    Blazor.addEventListener('enhancedload', () => {{
+                        let newUrl = window.location.href;
+                        if (currentUrl != newUrl) {{
+                            window.scrollTo({{ top: 0, left: 0, behavior: '{behavior}' }});
+                        }}
+                        currentUrl = newUrl;
+                    }});
+                }})();
+            </script>
+        ";
+    }
 
-Our system allows for:
+    public enum ScrollBehavior
+    {
+        Auto,
+        Instant,
+        Smooth
+    }
+}
+```
 
-- Multiple clock-in methods (card, biometric, mobile)
-- Prevention of buddy punching
-- Management of missed punches
-- Multiple shift type creation (fixed, rotating, flexible)
-- Break duration tracking with paid vs. unpaid break management
-- Automatic overtime calculation with multiple rate configurations
-- Comprehensive leave request workflows
+## How It Works
+The component leverages Blazor's navigation events and the browser's native scrolling capabilities:
 
-## AI-Driven Workforce Planning
+1. It injects a small JavaScript snippet that monitors URL changes
+2. When navigation occurs, it detects the URL change through Blazor's 'enhancedload' event
+3. The component then automatically scrolls to the top using the configured behavior
+4. All of this happens seamlessly without any visible interference
+   
+## Getting Started
 
-Predict tomorrow's staffing needs today. Hexavera uses AI and ML to forecast demand, prevent bottlenecks, and optimize shift allocations.
+### Installation
 
-> "Organizations using AI-driven planning solutions report a 42% improvement in accuracy and a 35% faster planning cycle time."
+Install the package via NuGet:
 
-Our Workforce Planning Module combines historical data, current requirements, and predictive analytics to ensure optimal staffing levels and skill coverage. With features like:
+```bash
+dotnet add package Boranija.Blazor.Navigation
+```
 
-- AI-powered schedule generation
-- Complex pattern management
-- Multi-location scheduling
-- Skills-based scheduling
-- Cost optimization
-- Real-time reallocation
-- Cross-training management
+### Basic Usage
+Add the component to your MainLayout.razor or App.razor:
 
-The Machine Learning Module analyzes patterns, predicts trends, and provides intelligent optimization suggestions through:
+```razor
+<EnhancedNavigationInterceptor />
+```
 
-- Historical data analysis for future staffing requirements
-- Pattern recognition in attendance data
-- Seasonal trend identification
-- Behavior pattern analysis for turnover risk
-- Regular attendance pattern identification
-- Productivity trend analysis
+### Customizing Scroll Behavior
+Choose from three scroll behaviors:
 
-## Seamless Integrations
+```razor
+<EnhancedNavigationInterceptor Behavior="ScrollBehavior.Smooth" />
+```
 
-From SCADA systems to HRIS and payroll, Hexavera integrates seamlessly with your existing tech stack. Spend less time juggling tools and more time focusing on strategic initiatives.
+Available options:
 
-Our SCADA/MES Integration Module enables real-time coordination between human resources and manufacturing processes. This provides:
+- `ScrollBehavior.Smooth`: Animated smooth scrolling
+- `ScrollBehavior.Instant`: Immediate position change
+- `ScrollBehavior.Auto`: Browser's default behavior
 
-- Real-time production line monitoring
-- Equipment monitoring
-- Staff presence tracking
-- Production schedule alignment
-- Skill coverage assurance
-- Break coverage coordination
+Performance Considerations
+The component is designed to be lightweight and efficient:
 
-Meanwhile, our Integration Module connects Hexavera with other enterprise systems and devices:
+- Minimal JavaScript footprint
+- No external dependencies
+- Efficient event handling
+- Zero impact on initial page load
 
-- Employee data synchronization with HR systems
-- Organization structure sync
-- Time data export to payroll systems
-- Wage rule application
-- Multiple time clock device type support
-- Multiple biometric type support
+Browser Compatibility
+EnhancedNavigationInterceptor works across all modern browsers:
 
-## Global Compliance Made Easy
+- Chrome 61+
+- Firefox 36+
+- Safari 14+
+- Edge 79+
+  
+Future Enhancements
+I'm actively working on new features:
 
-Ensure your organization stays ahead of complex labor regulations. Hexavera automates compliance tracking, reporting, and policy management across multiple jurisdictions.
+- Scroll position preservation option
+- Custom scroll offset support
+- Scroll to hash functionality
+- Animation duration configuration
+- Enhanced mobile support
 
-Our Security & Compliance Module ensures system operation adheres to security requirements and regulatory standards:
-
-- Role-based access control
-- Audit logging
-- Data encryption
-- Privacy protection
-- Automated compliance monitoring
-- Labor law compliance
-- Industry regulation adherence
-- Documentation maintenance
-
-## Comprehensive Dashboards
-
-Our Dashboard Module provides customizable, real-time visual representations of key workforce metrics and operational data, enabling quick access to critical information at various organizational levels:
-
-### Executive Dashboard
-- Strategic KPI tracking
-- Goal achievement monitoring
-- Trend visualization
-- Resource optimization
-- Cost efficiency tracking
-
-### Operational Dashboard
-- Current staffing levels
-- Attendance status
-- Production metrics
-- Equipment status
-- Resource allocation
-
-### Analytical Dashboard
-- Staffing predictions
-- Resource requirements
-- Cost projections
-- Trend identification
-- Anomaly detection
-
-## Flexible Pricing Models
-
-Hexavera offers tailored pricing packages to meet the needs of organizations at any stage of growth:
-
-### Essential Package
-Suitable for small to medium businesses with:
-- Basic Access Control
-- Basic Time & Attendance
-- Standard Reports
-- Basic Dashboard
-- Web Application Access
-
-### Advanced Package
-For medium to large businesses (200-1000 employees) with:
-- Advanced Access Control
-- Advanced Time & Attendance
-- Workforce Planning & Scheduling
-- Integration with HR/Payroll
-- Basic ML Predictions
-
-### Enterprise Package
-For large enterprises (1000+ employees) with:
-- Full Module Access
-- Advanced ML & Analytics
-- SCADA/MES Integration
-- Cross-tenant Reporting
-- Advanced Compliance Tools
-
-### Corporate Group Package
-For parent companies with multiple subsidiaries:
-- Global Dashboard
-- Cross-company Analytics
-- Consolidated Reporting
-- Group-wide Policy Management
-- Global Resource Planning
+## Contributing
+This component is part of my open-source Blazor components collection. Contributions are welcome on GitHub at https://github.com/obrana-boranija/blazor-components.
 
 ## Conclusion
-
-Hexavera is not just a platform — it's a strategic partner for businesses looking to future-proof their workforce operations. By integrating cutting-edge AI technology with robust workforce management functionality, Hexavera helps organizations optimize their human capital, ensure compliance, and drive operational efficiency.
-
-Ready to transform your workforce management approach? [Explore our pricing options](/pricing) or [book a demo](/contact) to see Hexavera in action.
-
----
+`EnhancedNavigationInterceptor` provides a simple yet powerful solution for managing scroll behavior in Blazor applications. By implementing this component, you can significantly improve your application's navigation experience with minimal effort.
 
 ## Related Resources
-
-- [Workforce Management Best Practices](/blog/workforce-management-best-practices)
-- [ROI Calculator](/roi-calculator)
-- [Integration Capabilities](/integrations)
-- [Developer Documentation](/docs)
+GitHub Repository
+NuGet Package
+Documentation
+Issue Tracker
