@@ -1,28 +1,28 @@
 ---
-title: "Enhancing Blazor Navigation: Introducing EnhancedNavigationInterceptor"
+title: "EnhancedNavigationInterceptor: Auto-Scrolling for Blazor Navigation"
 author: "Dejan Demonjić"
 date: "2025-04-19"
-description: "Discover how to implement smooth page transitions in Blazor applications with EnhancedNavigationInterceptor - a lightweight component that automatically manages scroll behavior during navigation."
-tags: [Blazor, Navigation, Web Development, .NET, Component Library]
-keywords: [blazor navigation, scroll behavior, page transitions, enhanced navigation, blazor components, smooth scroll]
+description: "Technical implementation of scroll position reset during Blazor navigation using the EnhancedNavigationInterceptor component."
+tags: [Blazor, Navigation, Component, .NET]
+keywords: [blazor navigation, scroll reset, page transitions, navigation events]
 slug: "enhanced-navigation-interceptor"
-is_featured: true
-featured_image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3"
+is_featured: false
+featured_image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3"
 ---
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Enhancing Blazor Navigation: Introducing EnhancedNavigationInterceptor",
+  "headline": "EnhancedNavigationInterceptor: Auto-Scrolling for Blazor Navigation",
   "datePublished": "2025-04-19",
   "author": {"@type":"Person","name":"Dejan Demonjić"},
-  "publisher": {"@type":"Organization","name":"Dejan Demonjić Blog","logo":{"@type":"ImageObject","url":"https://your-blog-url.com/logo.png"}},
-  "url": "https://your-blog-url.com/enhanced-navigation-interceptor",
-  "description": "Discover how to implement smooth page transitions in Blazor applications with EnhancedNavigationInterceptor - a lightweight component that automatically manages scroll behavior during navigation.",
+  "publisher": {"@type":"Organization","name":"Dejan Demonjić","logo":{"@type":"ImageObject","url":"https://github.com/obrana-boranija.png"}},
+  "url": "https://dejan-demonjic.com/blog/enhanced-navigation-interceptor",
+  "description": "Technical implementation of scroll position reset during Blazor navigation using the EnhancedNavigationInterceptor component.",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://your-blog-url.com/enhanced-navigation-interceptor"
+    "@id": "https://dejan-demonjic.com/blog/enhanced-navigation-interceptor"
   }
 }
 </script>
@@ -36,46 +36,37 @@ featured_image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?au
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://your-blog-url.com/"
+      "item": "https://dejan-demonjic.com/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Blog",
-      "item": "https://your-blog-url.com/blog"
+      "item": "https://dejan-demonjic.com/blog"
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Enhancing Blazor Navigation",
-      "item": "https://your-blog-url.com/enhanced-navigation-interceptor"
+      "name": "Blazor",
+      "item": "https://dejan-demonjic.com/blog/category/blazor"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "EnhancedNavigationInterceptor",
+      "item": "https://dejan-demonjic.com/blog/enhanced-navigation-interceptor"
     }
   ]
 }
 </script>
 
-# Enhancing Blazor Navigation: Introducing EnhancedNavigationInterceptor
+# EnhancedNavigationInterceptor: Auto-Scrolling for Blazor Navigation
 
-In modern web development, smooth user experiences are crucial. One often overlooked aspect is handling page scroll behavior during navigation in single-page applications. Today, I'm excited to introduce EnhancedNavigationInterceptor, a Blazor component that elegantly solves this challenge.
+Blazor's SPA architecture preserves scroll position during navigation. The `EnhancedNavigationInterceptor` component resets scroll position when URLs change.
 
-## The Navigation Challenge
+## Component Details
 
-When users navigate between pages in a Blazor application, they might find themselves stuck at their previous scroll position instead of starting at the top of the new page. This creates a jarring experience and forces users to manually scroll up. EnhancedNavigationInterceptor addresses this issue by automatically managing scroll behavior during navigation.
-
-## Component Overview
-
-EnhancedNavigationInterceptor is a lightweight component that:
-
-- Automatically scrolls to the top on page navigation
-- Provides configurable scroll behavior options
-- Integrates seamlessly with Blazor's navigation system
-- Requires minimal setup and configuration
-
-## Implementation
-
-Here's the complete component implementation:
-
-```razor
+```csharp
 @((MarkupString)script)
 
 @functions {
@@ -101,18 +92,18 @@ Here's the complete component implementation:
     {
         var behavior = GetBehaviorString();
         return $@"
-            <script>
-                (function() {{
-                    let currentUrl = window.location.href;
-                    Blazor.addEventListener('enhancedload', () => {{
-                        let newUrl = window.location.href;
-                        if (currentUrl != newUrl) {{
-                            window.scrollTo({{ top: 0, left: 0, behavior: '{behavior}' }});
-                        }}
-                        currentUrl = newUrl;
-                    }});
-                }})();
-            </script>
+        <script>
+        (function() {{
+            let currentUrl = window.location.href;
+            Blazor.addEventListener('enhancedload', () => {{
+                let newUrl = window.location.href;
+                if (currentUrl != newUrl) {{
+                    window.scrollTo({{ top: 0, left: 0, behavior: '{behavior}' }});
+                }}
+                currentUrl = newUrl;
+            }});
+        }})();
+        </script>
         ";
     }
 
@@ -125,79 +116,161 @@ Here's the complete component implementation:
 }
 ```
 
-## How It Works
-The component leverages Blazor's navigation events and the browser's native scrolling capabilities:
+## Implementation
 
-1. It injects a small JavaScript snippet that monitors URL changes
-2. When navigation occurs, it detects the URL change through Blazor's 'enhancedload' event
-3. The component then automatically scrolls to the top using the configured behavior
-4. All of this happens seamlessly without any visible interference
-   
-## Getting Started
+The component:
+1. Injects a JavaScript function via `MarkupString`
+2. Listens to Blazor's `enhancedload` event
+3. Compares current and new URLs
+4. Scrolls to top when URLs differ
+5. Offers configurable scroll behavior (smooth, instant, auto)
+
+## Usage
 
 ### Installation
 
-Install the package via NuGet:
-
 ```bash
-dotnet add package Boranija.Blazor.Navigation
+dotnet add package Osirion.Blazor
 ```
 
-### Basic Usage
-Add the component to your App.razor just below `blazor.web.js`:
+### Setup
 
-```razor
-<script src="_framework/blazor.web.js"></script>
+1. Add required using statement:
 
-<EnhancedNavigationInterceptor /> <!-- 👈 Here -->
+```csharp
+@using Osirion.Blazor.Navigation
 ```
 
-### Customizing Scroll Behavior
-Choose from three scroll behaviors:
+2. Add to layout:
 
 ```razor
 <EnhancedNavigationInterceptor Behavior="ScrollBehavior.Smooth" />
 ```
 
-Available options:
+### Configuration
 
-- `ScrollBehavior.Smooth`: Animated smooth scrolling
-- `ScrollBehavior.Instant`: Immediate position change
-- `ScrollBehavior.Auto`: Browser's default behavior
+Single parameter available:
 
-Performance Considerations
-The component is designed to be lightweight and efficient:
+```csharp
+[Parameter]
+public ScrollBehavior Behavior { get; set; } = ScrollBehavior.Auto;
+```
 
-- Minimal JavaScript footprint
-- No external dependencies
-- Efficient event handling
-- Zero impact on initial page load
+Options:
+- `ScrollBehavior.Auto`: Browser default
+- `ScrollBehavior.Smooth`: Animated scrolling
+- `ScrollBehavior.Instant`: Immediate position reset
 
-Browser Compatibility
-EnhancedNavigationInterceptor works across all modern browsers:
+### Technical Implementation
 
-- Chrome 61+
-- Firefox 36+
-- Safari 14+
-- Edge 79+
-  
-Future Enhancements
-I'm actively working on new features:
+The component renders a JavaScript snippet that:
+1. Stores the current URL on initialization
+2. Listens for Blazor's `enhancedload` event
+3. Compares stored URL with new URL after navigation
+4. Scrolls to top if URLs differ
+5. Updates stored URL for next navigation
 
-- Scroll position preservation option
-- Custom scroll offset support
-- Scroll to hash functionality
-- Animation duration configuration
-- Enhanced mobile support
+Main implementation in `GetScript()` method:
+```javascript
+(function() {
+    let currentUrl = window.location.href;
+    Blazor.addEventListener('enhancedload', () => {
+        let newUrl = window.location.href;
+        if (currentUrl != newUrl) {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        }
+        currentUrl = newUrl;
+    });
+})();
+```
 
-## Contributing
-This component is part of my open-source Blazor components collection. Contributions are welcome on GitHub at https://github.com/obrana-boranija/blazor-components.
+## Benefits
 
-## Conclusion
-`EnhancedNavigationInterceptor` provides a simple yet powerful solution for managing scroll behavior in Blazor applications. By implementing this component, you can significantly improve your application's navigation experience with minimal effort.
+- Resets scroll position on page navigation
+- Configurable scroll behavior (smooth/instant/auto)
+- Zero dependencies
+- Works in both Blazor Server and WebAssembly
+- Minimal overhead
 
-## Related Resources
-GitHub Repository
-NuGet Package
-Documentation
-Issue Tracker
+## Integration Examples
+
+### Basic Implementation
+
+```razor
+<EnhancedNavigationInterceptor />
+```
+
+### With Custom Behavior
+
+```razor
+<EnhancedNavigationInterceptor Behavior="ScrollBehavior.Smooth" />
+```
+
+### Within Layout
+
+```razor
+<div class="main">
+    <EnhancedNavigationInterceptor />
+    @Body
+</div>
+```
+
+## Source Code
+
+Full component source from Osirion.Blazor:
+
+```csharp
+@((MarkupString)script)
+
+@functions {
+    private MarkupString script => (MarkupString)GetScript();
+}
+
+@code {
+    [Parameter]
+    public ScrollBehavior Behavior { get; set; } = ScrollBehavior.Auto;
+
+    private string GetBehaviorString()
+    {
+        return Behavior switch
+        {
+            ScrollBehavior.Smooth => "smooth",
+            ScrollBehavior.Instant => "instant",
+            ScrollBehavior.Auto => "auto",
+            _ => "instant"
+        };
+    }
+
+    private string GetScript()
+    {
+        var behavior = GetBehaviorString();
+        return $@"
+        <script>
+        (function() {{
+            let currentUrl = window.location.href;
+            Blazor.addEventListener('enhancedload', () => {{
+                let newUrl = window.location.href;
+                if (currentUrl != newUrl) {{
+                    window.scrollTo({{ top: 0, left: 0, behavior: '{behavior}' }});
+                }}
+                currentUrl = newUrl;
+            }});
+        }})();
+        </script>
+        ";
+    }
+
+    public enum ScrollBehavior
+    {
+        Auto,
+        Instant,
+        Smooth
+    }
+}
+```
+
+## Package Information
+
+- **GitHub**: [Osirion.Blazor](https://github.com/obrana-boranija/Osirion.Blazor)
+- **NuGet**: [Osirion.Blazor](https://www.nuget.org/packages/Osirion.Blazor)
+- **Author**: Dejan Demonjić
