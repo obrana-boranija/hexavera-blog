@@ -7,6 +7,7 @@ featured_image: "https://images.pexels.com/photos/31212940/pexels-photo-31212940
 categories: [Manufacturing, Integrations, Workforce Optimization]
 tags: [SCADA, MES, Workforce Planning, Real-Time Data]
 is_featured: true
+localization_id: "1"
 ---
 
 # How Hexavera Bridges SCADA/MES Systems for Smart Manufacturing Workforces
