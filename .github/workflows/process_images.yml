@@ -3,8 +3,8 @@ name: Process Images
 on:
   push:
     paths:
-      - 'content/images/**'
-      - '!content/images/processed/**'
+      - 'Content/Images/**'
+      - '!Content/Images/Processed/**'
   workflow_dispatch: # Allow manual triggering
 
 permissions:
