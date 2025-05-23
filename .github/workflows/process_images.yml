@@ -10,6 +10,13 @@ on:
 permissions:
   contents: write  # This grants write permissions to the repository
 
+env:
+  # Configure your paths here - change these if your directory structure changes
+  IMAGES_DIR: Content/Images
+  PROCESSED_DIR: Content/Images/Processed
+  # Supported formats: jpg, jpeg, png, webp, gif, tiff, avif
+  IMAGE_EXTENSIONS: "jpg|jpeg|png|webp|gif|tiff|tif|avif"
+
 jobs:
   process-images:
     runs-on: ubuntu-latest
@@ -32,9 +39,10 @@ jobs:
         echo "=== Current directory ==="
         pwd
         echo "=== Directory structure ==="
-        find Content -type f -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" | head -20
+        echo "Looking for images in: ${{ env.IMAGES_DIR }}"
+        find "${{ env.IMAGES_DIR }}" -type f | grep -E "\.(${{ env.IMAGE_EXTENSIONS }})$" | head -20 || echo "No images found"
         echo "=== Images directory contents ==="
-        ls -la Content/Images/ || echo "No images directory"
+        ls -la "${{ env.IMAGES_DIR }}/" || echo "No images directory"
 
     - name: Process Images
       run: |
@@ -43,15 +51,24 @@ jobs:
         const fs = require('fs');
         const path = require('path');
 
+        // Configuration from environment variables
+        const imagesDir = './${{ env.IMAGES_DIR }}';
+        const outputDir = './${{ env.PROCESSED_DIR }}';
+        const imageExtensions = '${{ env.IMAGE_EXTENSIONS }}'.split('|');
+
         const sizes = [
-          { width: 400, height: 300, suffix: '_sm' },
-          { width: 800, height: 600, suffix: '_md' },
-          { width: 1200, height: 900, suffix: '_lg' }
+          { width: 315, height: 315, suffix: '-315x315' },
+          { width: 630, height: 315, suffix: '-630x315' },
+          { width: 1200, height: 630, suffix: '-1200x630' }
         ];
 
+        // Build regex pattern from extensions
+        const extensionPattern = new RegExp(`\\.(${imageExtensions.join('|')})$`, 'i');
+
         async function processImages() {
-          const imagesDir = './Content/Images';
-          const outputDir = './Content/Images/Processed';
+          console.log(`Processing images from: ${imagesDir}`);
+          console.log(`Output directory: ${outputDir}`);
+          console.log(`Supported extensions: ${imageExtensions.join(', ')}`);
           
           if (!fs.existsSync(outputDir)) {
             fs.mkdirSync(outputDir, { recursive: true });
@@ -69,11 +86,11 @@ jobs:
               const filePath = path.join(imagesDir, file);
               const stat = fs.statSync(filePath);
               
-              // Skip directories
+              // Skip directories (including 'processed')
               if (stat.isDirectory()) return false;
               
               // Check for image extensions
-              return /\.(jpg|jpeg|png)$/i.test(file);
+              return extensionPattern.test(file);
             });
 
           console.log('Filtered image files:', files);
@@ -81,36 +98,75 @@ jobs:
           for (const file of files) {
             const inputPath = path.join(imagesDir, file);
             const name = path.parse(file).name;
+            const ext = path.parse(file).ext.toLowerCase();
 
             try {
-              console.log(`Processing: ${file}`);
+              console.log(`\nProcessing: ${file}`);
               
               // First, try to read metadata to validate the image
               const metadata = await sharp(inputPath).metadata();
               console.log(`  Format: ${metadata.format}, Size: ${metadata.width}x${metadata.height}`);
 
-              // Create WebP versions in different sizes
-              for (const size of sizes) {
-                const outputPath = path.join(outputDir, `${name}${size.suffix}.webp`);
-                
-                await sharp(inputPath)
-                  .resize(size.width, size.height, { 
-                    fit: 'cover',
-                    position: 'center'
-                  })
-                  .webp({ quality: 85 })
-                  .toFile(outputPath);
-
-                console.log(`  Created: ${outputPath}`);
+              // Skip if already webp and in the main directory (not resizing originals)
+              if (ext === '.webp' && !file.includes('_sm') && !file.includes('_md') && !file.includes('_lg')) {
+                console.log(`  Skipping original WebP file: ${file}`);
+                continue;
               }
 
-              // Create original size WebP
-              const originalWebP = path.join(outputDir, `${name}.webp`);
-              await sharp(inputPath)
-                .webp({ quality: 90 })
-                .toFile(originalWebP);
+              // For GIFs, we need special handling to preserve animation
+              const isAnimated = metadata.pages && metadata.pages > 1;
               
-              console.log(`  Created: ${originalWebP}`);
+              if (isAnimated) {
+                console.log(`  Animated image detected (${metadata.pages} frames)`);
+                
+                // For animated images, create WebP with animation preserved
+                // Only create original size to preserve animation
+                const originalWebP = path.join(outputDir, `${name}.webp`);
+                await sharp(inputPath, { animated: true })
+                  .webp({ quality: 90 })
+                  .toFile(originalWebP);
+                
+                console.log(`  Created animated WebP: ${originalWebP}`);
+                
+                // For resized versions, take the first frame only
+                for (const size of sizes) {
+                  const outputPath = path.join(outputDir, `${name}${size.suffix}.webp`);
+                  
+                  await sharp(inputPath, { pages: 1 }) // First frame only
+                    .resize(size.width, size.height, { 
+                      fit: 'cover',
+                      position: 'center'
+                    })
+                    .webp({ quality: 85 })
+                    .toFile(outputPath);
+
+                  console.log(`  Created (first frame): ${outputPath}`);
+                }
+              } else {
+                // Regular image processing for non-animated images
+                // Create WebP versions in different sizes
+                for (const size of sizes) {
+                  const outputPath = path.join(outputDir, `${name}${size.suffix}.webp`);
+                  
+                  await sharp(inputPath)
+                    .resize(size.width, size.height, { 
+                      fit: 'cover',
+                      position: 'center'
+                    })
+                    .webp({ quality: 85 })
+                    .toFile(outputPath);
+
+                  console.log(`  Created: ${outputPath}`);
+                }
+
+                // Create original size WebP
+                const originalWebP = path.join(outputDir, `${name}.webp`);
+                await sharp(inputPath)
+                  .webp({ quality: 90 })
+                  .toFile(originalWebP);
+                
+                console.log(`  Created: ${originalWebP}`);
+              }
               
             } catch (error) {
               console.error(`Failed to process ${file}:`, error.message);
@@ -125,13 +181,13 @@ jobs:
 
     - name: Check processed images
       run: |
-        echo "=== Checking Content/Images directory ==="
-        ls -la Content/Images/ || echo "No images directory found"
+        echo "=== Checking ${{ env.IMAGES_DIR }} directory ==="
+        ls -la "${{ env.IMAGES_DIR }}/" || echo "No images directory found"
         
         echo "=== Checking processed directory ==="
-        if [ -d "Content/Images/Processed" ]; then
-          ls -la Content/Images/Processed/
-          echo "Total processed files: $(find Content/Images/Processed -type f | wc -l)"
+        if [ -d "${{ env.PROCESSED_DIR }}" ]; then
+          ls -la "${{ env.PROCESSED_DIR }}/"
+          echo "Total processed files: $(find "${{ env.PROCESSED_DIR }}" -type f | wc -l)"
         else
           echo "Processed directory does not exist!"
         fi
@@ -142,7 +198,7 @@ jobs:
         git config --local user.name "GitHub Action"
         
         # Check if there are any changes to commit
-        git add Content/Images/Processed/
+        git add "${{ env.PROCESSED_DIR }}/"
         
         if git diff --staged --quiet; then
           echo "No changes to commit"
@@ -160,11 +216,13 @@ jobs:
         echo "Repository: ${{ github.repository }}"
         echo "Branch: ${{ github.ref_name }}"
         echo "Commit: ${{ github.sha }}"
+        echo "Images directory: ${{ env.IMAGES_DIR }}"
+        echo "Processed directory: ${{ env.PROCESSED_DIR }}"
         
-        if [ -d "Content/Images/Processed" ]; then
-          echo "Processed images created: $(find Content/Images/Processed -type f -name "*.webp" | wc -l)"
+        if [ -d "${{ env.PROCESSED_DIR }}" ]; then
+          echo "Processed images created: $(find "${{ env.PROCESSED_DIR }}" -type f -name "*.webp" | wc -l)"
           echo "Files:"
-          find Content/Images/Processed -type f -name "*.webp" | head -10
+          find "${{ env.PROCESSED_DIR }}" -type f -name "*.webp" | head -10
         else
           echo "No processed directory created"
         fi
