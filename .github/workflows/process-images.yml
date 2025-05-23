@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT_TOKEN }}
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -25,6 +25,15 @@ jobs:
 
     - name: Install Sharp for image processing
       run: npm install sharp
+
+    - name: Check initial directory state
+      run: |
+        echo "=== Current directory ==="
+        pwd
+        echo "=== Directory structure ==="
+        find content -type f -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" | head -20
+        echo "=== Images directory contents ==="
+        ls -la content/images/ || echo "No images directory"
 
     - name: Process Images
       run: |
@@ -113,10 +122,48 @@ jobs:
         processImages().catch(console.error);
         EOF
 
+    - name: Check processed images
+      run: |
+        echo "=== Checking content/images directory ==="
+        ls -la content/images/ || echo "No images directory found"
+        
+        echo "=== Checking processed directory ==="
+        if [ -d "content/images/processed" ]; then
+          ls -la content/images/processed/
+          echo "Total processed files: $(find content/images/processed -type f | wc -l)"
+        else
+          echo "Processed directory does not exist!"
+        fi
+
     - name: Commit processed images
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        
+        # Check if there are any changes to commit
         git add content/images/processed/
-        git diff --staged --quiet || git commit -m "Auto-process images [skip ci]"
-        git push
+        
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          echo "Changes detected, committing..."
+          git commit -m "Auto-process images [skip ci]"
+          git push
+          echo "Changes pushed successfully"
+        fi
+        
+    - name: Summary
+      if: always()
+      run: |
+        echo "=== Workflow Summary ==="
+        echo "Repository: ${{ github.repository }}"
+        echo "Branch: ${{ github.ref_name }}"
+        echo "Commit: ${{ github.sha }}"
+        
+        if [ -d "content/images/processed" ]; then
+          echo "Processed images created: $(find content/images/processed -type f -name "*.webp" | wc -l)"
+          echo "Files:"
+          find content/images/processed -type f -name "*.webp" | head -10
+        else
+          echo "No processed directory created"
+        fi
