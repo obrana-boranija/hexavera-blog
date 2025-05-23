@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'content/images/**'
+      - '!content/images/processed/**'
   workflow_dispatch: # Allow manual triggering
 
 permissions:
@@ -31,9 +32,9 @@ jobs:
         echo "=== Current directory ==="
         pwd
         echo "=== Directory structure ==="
-        find content -type f -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" | head -20
+        find Content -type f -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" | head -20
         echo "=== Images directory contents ==="
-        ls -la content/images/ || echo "No images directory"
+        ls -la Content/images/ || echo "No images directory"
 
     - name: Process Images
       run: |
@@ -49,8 +50,8 @@ jobs:
         ];
 
         async function processImages() {
-          const imagesDir = './content/images';
-          const outputDir = './content/images/processed';
+          const imagesDir = './Content/images';
+          const outputDir = './Content/images/processed';
           
           if (!fs.existsSync(outputDir)) {
             fs.mkdirSync(outputDir, { recursive: true });
@@ -124,13 +125,13 @@ jobs:
 
     - name: Check processed images
       run: |
-        echo "=== Checking content/images directory ==="
-        ls -la content/images/ || echo "No images directory found"
+        echo "=== Checking Content/images directory ==="
+        ls -la Content/images/ || echo "No images directory found"
         
         echo "=== Checking processed directory ==="
-        if [ -d "content/images/processed" ]; then
-          ls -la content/images/processed/
-          echo "Total processed files: $(find content/images/processed -type f | wc -l)"
+        if [ -d "Content/images/processed" ]; then
+          ls -la Content/images/processed/
+          echo "Total processed files: $(find Content/images/processed -type f | wc -l)"
         else
           echo "Processed directory does not exist!"
         fi
@@ -141,7 +142,7 @@ jobs:
         git config --local user.name "GitHub Action"
         
         # Check if there are any changes to commit
-        git add content/images/processed/
+        git add Content/images/processed/
         
         if git diff --staged --quiet; then
           echo "No changes to commit"
@@ -160,10 +161,10 @@ jobs:
         echo "Branch: ${{ github.ref_name }}"
         echo "Commit: ${{ github.sha }}"
         
-        if [ -d "content/images/processed" ]; then
-          echo "Processed images created: $(find content/images/processed -type f -name "*.webp" | wc -l)"
+        if [ -d "Content/images/processed" ]; then
+          echo "Processed images created: $(find Content/images/processed -type f -name "*.webp" | wc -l)"
           echo "Files:"
-          find content/images/processed -type f -name "*.webp" | head -10
+          find Content/images/processed -type f -name "*.webp" | head -10
         else
           echo "No processed directory created"
         fi
