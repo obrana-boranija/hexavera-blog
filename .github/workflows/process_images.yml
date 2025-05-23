@@ -34,7 +34,7 @@ jobs:
         echo "=== Directory structure ==="
         find Content -type f -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" | head -20
         echo "=== Images directory contents ==="
-        ls -la Content/images/ || echo "No images directory"
+        ls -la Content/Images/ || echo "No images directory"
 
     - name: Process Images
       run: |
@@ -50,8 +50,8 @@ jobs:
         ];
 
         async function processImages() {
-          const imagesDir = './Content/images';
-          const outputDir = './Content/images/processed';
+          const imagesDir = './Content/Images';
+          const outputDir = './Content/Images/Processed';
           
           if (!fs.existsSync(outputDir)) {
             fs.mkdirSync(outputDir, { recursive: true });
@@ -125,13 +125,13 @@ jobs:
 
     - name: Check processed images
       run: |
-        echo "=== Checking Content/images directory ==="
-        ls -la Content/images/ || echo "No images directory found"
+        echo "=== Checking Content/Images directory ==="
+        ls -la Content/Images/ || echo "No images directory found"
         
         echo "=== Checking processed directory ==="
-        if [ -d "Content/images/processed" ]; then
-          ls -la Content/images/processed/
-          echo "Total processed files: $(find Content/images/processed -type f | wc -l)"
+        if [ -d "Content/Images/Processed" ]; then
+          ls -la Content/Images/Processed/
+          echo "Total processed files: $(find Content/Images/Processed -type f | wc -l)"
         else
           echo "Processed directory does not exist!"
         fi
@@ -142,7 +142,7 @@ jobs:
         git config --local user.name "GitHub Action"
         
         # Check if there are any changes to commit
-        git add Content/images/processed/
+        git add Content/Images/Processed/
         
         if git diff --staged --quiet; then
           echo "No changes to commit"
@@ -161,10 +161,10 @@ jobs:
         echo "Branch: ${{ github.ref_name }}"
         echo "Commit: ${{ github.sha }}"
         
-        if [ -d "Content/images/processed" ]; then
-          echo "Processed images created: $(find Content/images/processed -type f -name "*.webp" | wc -l)"
+        if [ -d "Content/Images/Processed" ]; then
+          echo "Processed images created: $(find Content/Images/Processed -type f -name "*.webp" | wc -l)"
           echo "Files:"
-          find Content/images/processed -type f -name "*.webp" | head -10
+          find Content/Images/Processed -type f -name "*.webp" | head -10
         else
           echo "No processed directory created"
         fi
