@@ -6,6 +6,9 @@ on:
       - 'content/images/**'
   workflow_dispatch: # Allow manual triggering
 
+permissions:
+  contents: write  # This grants write permissions to the repository
+
 jobs:
   process-images:
     runs-on: ubuntu-latest
@@ -13,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        token: ${{ secrets.PAT_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -44,33 +47,66 @@ jobs:
             fs.mkdirSync(outputDir, { recursive: true });
           }
 
-          const files = fs.readdirSync(imagesDir)
-            .filter(file => /\.(jpg|jpeg|png)$/i.test(file));
+          // Get all files and filter for images
+          const allFiles = fs.readdirSync(imagesDir);
+          console.log('All files in directory:', allFiles);
+          
+          const files = allFiles
+            .filter(file => {
+              // Skip hidden files and directories
+              if (file.startsWith('.')) return false;
+              
+              const filePath = path.join(imagesDir, file);
+              const stat = fs.statSync(filePath);
+              
+              // Skip directories
+              if (stat.isDirectory()) return false;
+              
+              // Check for image extensions
+              return /\.(jpg|jpeg|png)$/i.test(file);
+            });
+
+          console.log('Filtered image files:', files);
 
           for (const file of files) {
             const inputPath = path.join(imagesDir, file);
             const name = path.parse(file).name;
 
-            // Create WebP versions in different sizes
-            for (const size of sizes) {
-              const outputPath = path.join(outputDir, `${name}${size.suffix}.webp`);
+            try {
+              console.log(`Processing: ${file}`);
               
+              // First, try to read metadata to validate the image
+              const metadata = await sharp(inputPath).metadata();
+              console.log(`  Format: ${metadata.format}, Size: ${metadata.width}x${metadata.height}`);
+
+              // Create WebP versions in different sizes
+              for (const size of sizes) {
+                const outputPath = path.join(outputDir, `${name}${size.suffix}.webp`);
+                
+                await sharp(inputPath)
+                  .resize(size.width, size.height, { 
+                    fit: 'cover',
+                    position: 'center'
+                  })
+                  .webp({ quality: 85 })
+                  .toFile(outputPath);
+
+                console.log(`  Created: ${outputPath}`);
+              }
+
+              // Create original size WebP
+              const originalWebP = path.join(outputDir, `${name}.webp`);
               await sharp(inputPath)
-                .resize(size.width, size.height, { 
-                  fit: 'cover',
-                  position: 'center'
-                })
-                .webp({ quality: 85 })
-                .toFile(outputPath);
-
-              console.log(`Created: ${outputPath}`);
+                .webp({ quality: 90 })
+                .toFile(originalWebP);
+              
+              console.log(`  Created: ${originalWebP}`);
+              
+            } catch (error) {
+              console.error(`Failed to process ${file}:`, error.message);
+              console.error(`Full error:`, error);
+              // Continue with other images even if one fails
             }
-
-            // Create original size WebP
-            const originalWebP = path.join(outputDir, `${name}.webp`);
-            await sharp(inputPath)
-              .webp({ quality: 90 })
-              .toFile(originalWebP);
           }
         }
 
