@@ -197,10 +197,13 @@ jobs:
         if [ -d "${{ env.PROCESSED_DIR }}" ]; then
           echo "Creating image manifest..."
           
-          # Create JSON manifest
-          cat > "${{ env.PROCESSED_DIR }}/manifest.json" << 'EOF'
+          # Get current date
+          GENERATED_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          
+          # Start JSON manifest
+          cat > "${{ env.PROCESSED_DIR }}/manifest.json" << EOF
         {
-          "generated": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+          "generated": "$GENERATED_DATE",
           "baseUrl": "https://cdn.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/${{ env.PROCESSED_DIR }}/",
           "images": [
         EOF
@@ -228,16 +231,17 @@ jobs:
             fi
           done
           
-          cat >> "${{ env.PROCESSED_DIR }}/manifest.json" << 'EOF'
+          # Close JSON
+          cat >> "${{ env.PROCESSED_DIR }}/manifest.json" << EOF
           ]
         }
         EOF
           
           # Create markdown manifest
-          cat > "${{ env.PROCESSED_DIR }}/README.md" << 'EOF'
+          cat > "${{ env.PROCESSED_DIR }}/README.md" << EOF
         # Processed Images
         
-        Generated: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+        Generated: $GENERATED_DATE
         
         ## Available Images
         
@@ -249,14 +253,20 @@ jobs:
             if [ -f "$file" ]; then
               filename=$(basename "$file")
               size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo "0")
-              size_kb=$(echo "scale=2; $size / 1024" | bc 2>/dev/null || echo "N/A")
+              size_kb=$(echo "scale=2; $size / 1024" | bc 2>/dev/null || echo "$((size / 1024)) KB")
               url="https://cdn.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/${{ env.PROCESSED_DIR }}/$filename"
               
-              echo "| $filename | ${size_kb}KB | [Link]($url) |" >> "${{ env.PROCESSED_DIR }}/README.md"
+              echo "| $filename | ${size_kb} KB | [Link]($url) |" >> "${{ env.PROCESSED_DIR }}/README.md"
             fi
           done
           
           echo "Created manifest files"
+          
+          # Validate JSON
+          if command -v jq >/dev/null 2>&1; then
+            echo "Validating JSON manifest..."
+            jq . "${{ env.PROCESSED_DIR }}/manifest.json" > /dev/null && echo "JSON is valid" || echo "JSON validation failed"
+          fi
         fi
 
     - name: Commit processed images
