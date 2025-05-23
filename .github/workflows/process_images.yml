@@ -24,7 +24,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        token: ${{ secrets.PAT_TOKEN }}
+        token: ${{ secrets.PAT }}
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -57,9 +57,9 @@ jobs:
         const imageExtensions = '${{ env.IMAGE_EXTENSIONS }}'.split('|');
 
         const sizes = [
-          { width: 315, height: 315, suffix: '-315x315' },
-          { width: 630, height: 315, suffix: '-630x315' },
-          { width: 1200, height: 630, suffix: '-1200x630' }
+          { width: 400, height: 300, suffix: '_sm' },
+          { width: 800, height: 600, suffix: '_md' },
+          { width: 1200, height: 900, suffix: '_lg' }
         ];
 
         // Build regex pattern from extensions
@@ -192,6 +192,73 @@ jobs:
           echo "Processed directory does not exist!"
         fi
 
+    - name: Create image manifest
+      run: |
+        if [ -d "${{ env.PROCESSED_DIR }}" ]; then
+          echo "Creating image manifest..."
+          
+          # Create JSON manifest
+          cat > "${{ env.PROCESSED_DIR }}/manifest.json" << 'EOF'
+        {
+          "generated": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+          "baseUrl": "https://cdn.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/${{ env.PROCESSED_DIR }}/",
+          "images": [
+        EOF
+          
+          # Add each image to the manifest
+          first=true
+          for file in "${{ env.PROCESSED_DIR }}"/*.webp; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo "0")
+              
+              if [ "$first" = true ]; then
+                first=false
+              else
+                echo "," >> "${{ env.PROCESSED_DIR }}/manifest.json"
+              fi
+              
+              cat >> "${{ env.PROCESSED_DIR }}/manifest.json" << EOF
+            {
+              "filename": "$filename",
+              "url": "https://cdn.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/${{ env.PROCESSED_DIR }}/$filename",
+              "size": $size
+            }
+        EOF
+            fi
+          done
+          
+          cat >> "${{ env.PROCESSED_DIR }}/manifest.json" << 'EOF'
+          ]
+        }
+        EOF
+          
+          # Create markdown manifest
+          cat > "${{ env.PROCESSED_DIR }}/README.md" << 'EOF'
+        # Processed Images
+        
+        Generated: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+        
+        ## Available Images
+        
+        | Image | Size | CDN URL |
+        |-------|------|---------|
+        EOF
+          
+          for file in "${{ env.PROCESSED_DIR }}"/*.webp; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo "0")
+              size_kb=$(echo "scale=2; $size / 1024" | bc 2>/dev/null || echo "N/A")
+              url="https://cdn.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/${{ env.PROCESSED_DIR }}/$filename"
+              
+              echo "| $filename | ${size_kb}KB | [Link]($url) |" >> "${{ env.PROCESSED_DIR }}/README.md"
+            fi
+          done
+          
+          echo "Created manifest files"
+        fi
+
     - name: Commit processed images
       run: |
         git config --local user.email "action@github.com"
@@ -204,7 +271,7 @@ jobs:
           echo "No changes to commit"
         else
           echo "Changes detected, committing..."
-          git commit -m "Auto-process images [skip ci]"
+          git commit -m "Auto-process images and update manifest [skip ci]"
           git push
           echo "Changes pushed successfully"
         fi
