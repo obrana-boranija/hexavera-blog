@@ -1,0 +1,86 @@
+name: Process Images
+
+on:
+  push:
+    paths:
+      - 'content/images/**'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  process-images:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install Sharp for image processing
+      run: npm install sharp
+
+    - name: Process Images
+      run: |
+        node << 'EOF'
+        const sharp = require('sharp');
+        const fs = require('fs');
+        const path = require('path');
+
+        const sizes = [
+          { width: 400, height: 300, suffix: '_sm' },
+          { width: 800, height: 600, suffix: '_md' },
+          { width: 1200, height: 900, suffix: '_lg' }
+        ];
+
+        async function processImages() {
+          const imagesDir = './content/images';
+          const outputDir = './content/images/processed';
+          
+          if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, { recursive: true });
+          }
+
+          const files = fs.readdirSync(imagesDir)
+            .filter(file => /\.(jpg|jpeg|png)$/i.test(file));
+
+          for (const file of files) {
+            const inputPath = path.join(imagesDir, file);
+            const name = path.parse(file).name;
+
+            // Create WebP versions in different sizes
+            for (const size of sizes) {
+              const outputPath = path.join(outputDir, `${name}${size.suffix}.webp`);
+              
+              await sharp(inputPath)
+                .resize(size.width, size.height, { 
+                  fit: 'cover',
+                  position: 'center'
+                })
+                .webp({ quality: 85 })
+                .toFile(outputPath);
+
+              console.log(`Created: ${outputPath}`);
+            }
+
+            // Create original size WebP
+            const originalWebP = path.join(outputDir, `${name}.webp`);
+            await sharp(inputPath)
+              .webp({ quality: 90 })
+              .toFile(originalWebP);
+          }
+        }
+
+        processImages().catch(console.error);
+        EOF
+
+    - name: Commit processed images
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add content/images/processed/
+        git diff --staged --quiet || git commit -m "Auto-process images [skip ci]"
+        git push
