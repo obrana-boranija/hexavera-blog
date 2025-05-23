@@ -57,9 +57,9 @@ jobs:
         const imageExtensions = '${{ env.IMAGE_EXTENSIONS }}'.split('|');
 
         const sizes = [
-          { width: 400, height: 300, suffix: '_sm' },
-          { width: 800, height: 600, suffix: '_md' },
-          { width: 1200, height: 900, suffix: '_lg' }
+          { width: 315, height: 315, suffix: '-315x315' },
+          { width: 630, height: 315, suffix: '-630x315' },
+          { width: 1200, height: 630, suffix: '-1200x630' }
         ];
 
         // Build regex pattern from extensions
