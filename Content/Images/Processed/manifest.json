@@ -1,5 +1,5 @@
 {
-  "generated": "2025-06-18T18:58:25Z",
+  "generated": "2025-06-18T19:12:40Z",
   "baseUrl": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/",
   "images": [
     {
@@ -96,6 +96,30 @@
       "filename": "hexavera-dashboard-charts.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts.webp",
       "size": 26408
+    }
+,
+    {
+      "filename": "workforce-assessment-dashboard-with-absent-rate-kpi-1200x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi-1200x630.webp",
+      "size": 36510
+    }
+,
+    {
+      "filename": "workforce-assessment-dashboard-with-absent-rate-kpi-315x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi-315x315.webp",
+      "size": 9968
+    }
+,
+    {
+      "filename": "workforce-assessment-dashboard-with-absent-rate-kpi-630x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi-630x315.webp",
+      "size": 14052
+    }
+,
+    {
+      "filename": "workforce-assessment-dashboard-with-absent-rate-kpi.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi.webp",
+      "size": 50912
     }
   ]
 }
