@@ -1,6 +1,6 @@
 # Processed Images
 
-Generated: 2025-05-23T15:20:55Z
+Generated: 2025-06-18T18:58:25Z
 
 ## Available Images
 
@@ -18,3 +18,7 @@ Generated: 2025-05-23T15:20:55Z
 | core-web-vitals-315x315.webp | 22.28 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/core-web-vitals-315x315.webp) |
 | core-web-vitals-630x315.webp | 40.78 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/core-web-vitals-630x315.webp) |
 | core-web-vitals.webp | 129.01 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/core-web-vitals.webp) |
+| hexavera-dashboard-charts-1200x630.webp | 23.15 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts-1200x630.webp) |
+| hexavera-dashboard-charts-315x315.webp | 4.66 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts-315x315.webp) |
+| hexavera-dashboard-charts-630x315.webp | 10.70 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts-630x315.webp) |
+| hexavera-dashboard-charts.webp | 25.78 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts.webp) |

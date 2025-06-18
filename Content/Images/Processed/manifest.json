@@ -1,5 +1,5 @@
 {
-  "generated": "2025-05-23T15:20:55Z",
+  "generated": "2025-06-18T18:58:25Z",
   "baseUrl": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/",
   "images": [
     {
@@ -72,6 +72,30 @@
       "filename": "core-web-vitals.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/core-web-vitals.webp",
       "size": 132110
+    }
+,
+    {
+      "filename": "hexavera-dashboard-charts-1200x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts-1200x630.webp",
+      "size": 23714
+    }
+,
+    {
+      "filename": "hexavera-dashboard-charts-315x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts-315x315.webp",
+      "size": 4774
+    }
+,
+    {
+      "filename": "hexavera-dashboard-charts-630x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts-630x315.webp",
+      "size": 10962
+    }
+,
+    {
+      "filename": "hexavera-dashboard-charts.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts.webp",
+      "size": 26408
     }
   ]
 }
