@@ -1,5 +1,5 @@
 {
-  "generated": "2025-06-18T19:12:40Z",
+  "generated": "2025-06-19T06:35:50Z",
   "baseUrl": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/",
   "images": [
     {
@@ -72,6 +72,102 @@
       "filename": "core-web-vitals.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/core-web-vitals.webp",
       "size": 132110
+    }
+,
+    {
+      "filename": "hexavera-ai-cover-1200x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-cover-1200x630.webp",
+      "size": 31220
+    }
+,
+    {
+      "filename": "hexavera-ai-cover-315x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-cover-315x315.webp",
+      "size": 10312
+    }
+,
+    {
+      "filename": "hexavera-ai-cover-630x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-cover-630x315.webp",
+      "size": 14486
+    }
+,
+    {
+      "filename": "hexavera-ai-cover.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-cover.webp",
+      "size": 91872
+    }
+,
+    {
+      "filename": "hexavera-ai-deep-learning-1200x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-learning-1200x630.webp",
+      "size": 16712
+    }
+,
+    {
+      "filename": "hexavera-ai-deep-learning-315x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-learning-315x315.webp",
+      "size": 3972
+    }
+,
+    {
+      "filename": "hexavera-ai-deep-learning-630x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-learning-630x315.webp",
+      "size": 5630
+    }
+,
+    {
+      "filename": "hexavera-ai-deep-learning.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-learning.webp",
+      "size": 100136
+    }
+,
+    {
+      "filename": "hexavera-ai-deep-mind-1200x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-mind-1200x630.webp",
+      "size": 45368
+    }
+,
+    {
+      "filename": "hexavera-ai-deep-mind-315x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-mind-315x315.webp",
+      "size": 13896
+    }
+,
+    {
+      "filename": "hexavera-ai-deep-mind-630x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-mind-630x315.webp",
+      "size": 21386
+    }
+,
+    {
+      "filename": "hexavera-ai-deep-mind.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-mind.webp",
+      "size": 103640
+    }
+,
+    {
+      "filename": "hexavera-ai-face-reckognition-scan-1200x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-face-reckognition-scan-1200x630.webp",
+      "size": 28852
+    }
+,
+    {
+      "filename": "hexavera-ai-face-reckognition-scan-315x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-face-reckognition-scan-315x315.webp",
+      "size": 7310
+    }
+,
+    {
+      "filename": "hexavera-ai-face-reckognition-scan-630x315.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-face-reckognition-scan-630x315.webp",
+      "size": 9490
+    }
+,
+    {
+      "filename": "hexavera-ai-face-reckognition-scan.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-face-reckognition-scan.webp",
+      "size": 89088
     }
 ,
     {
