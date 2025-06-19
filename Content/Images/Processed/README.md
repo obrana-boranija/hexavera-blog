@@ -1,6 +1,6 @@
 # Processed Images
 
-Generated: 2025-06-19T06:35:50Z
+Generated: 2025-06-19T07:06:44Z
 
 ## Available Images
 
@@ -38,7 +38,7 @@ Generated: 2025-06-19T06:35:50Z
 | hexavera-dashboard-charts-315x315.webp | 4.66 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts-315x315.webp) |
 | hexavera-dashboard-charts-630x315.webp | 10.70 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts-630x315.webp) |
 | hexavera-dashboard-charts.webp | 25.78 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts.webp) |
-| workforce-assessment-dashboard-with-absent-rate-kpi-1200x630.webp | 35.65 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi-1200x630.webp) |
-| workforce-assessment-dashboard-with-absent-rate-kpi-315x315.webp | 9.73 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi-315x315.webp) |
-| workforce-assessment-dashboard-with-absent-rate-kpi-630x315.webp | 13.72 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi-630x315.webp) |
-| workforce-assessment-dashboard-with-absent-rate-kpi.webp | 49.71 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi.webp) |
+| workforce-assessment-dashboard-with-absent-rate-kpi-1200x630.webp | 55.15 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi-1200x630.webp) |
+| workforce-assessment-dashboard-with-absent-rate-kpi-315x315.webp | 15.04 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi-315x315.webp) |
+| workforce-assessment-dashboard-with-absent-rate-kpi-630x315.webp | 23.48 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi-630x315.webp) |
+| workforce-assessment-dashboard-with-absent-rate-kpi.webp | 160.18 KB | [Link](https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi.webp) |
