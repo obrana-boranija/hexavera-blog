@@ -1,5 +1,5 @@
 {
-  "generated": "2025-06-19T07:06:44Z",
+  "generated": "2025-06-19T16:50:19Z",
   "baseUrl": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/",
   "images": [
     {
@@ -18,6 +18,12 @@
       "filename": "api-caching-630x315.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/api-caching-630x315.webp",
       "size": 43966
+    }
+,
+    {
+      "filename": "api-caching-630x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/api-caching-630x630.webp",
+      "size": 67946
     }
 ,
     {
@@ -45,6 +51,12 @@
     }
 ,
     {
+      "filename": "business-people-630x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/business-people-630x630.webp",
+      "size": 73898
+    }
+,
+    {
       "filename": "business-people.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/business-people.webp",
       "size": 169230
@@ -66,6 +78,12 @@
       "filename": "core-web-vitals-630x315.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/core-web-vitals-630x315.webp",
       "size": 41768
+    }
+,
+    {
+      "filename": "core-web-vitals-630x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/core-web-vitals-630x630.webp",
+      "size": 53842
     }
 ,
     {
@@ -93,6 +111,12 @@
     }
 ,
     {
+      "filename": "hexavera-ai-cover-630x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-cover-630x630.webp",
+      "size": 23294
+    }
+,
+    {
       "filename": "hexavera-ai-cover.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-cover.webp",
       "size": 91872
@@ -114,6 +138,12 @@
       "filename": "hexavera-ai-deep-learning-630x315.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-learning-630x315.webp",
       "size": 5630
+    }
+,
+    {
+      "filename": "hexavera-ai-deep-learning-630x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-learning-630x630.webp",
+      "size": 10458
     }
 ,
     {
@@ -141,6 +171,12 @@
     }
 ,
     {
+      "filename": "hexavera-ai-deep-mind-630x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-mind-630x630.webp",
+      "size": 28172
+    }
+,
+    {
       "filename": "hexavera-ai-deep-mind.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-deep-mind.webp",
       "size": 103640
@@ -162,6 +198,12 @@
       "filename": "hexavera-ai-face-reckognition-scan-630x315.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-face-reckognition-scan-630x315.webp",
       "size": 9490
+    }
+,
+    {
+      "filename": "hexavera-ai-face-reckognition-scan-630x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-ai-face-reckognition-scan-630x630.webp",
+      "size": 22098
     }
 ,
     {
@@ -189,6 +231,12 @@
     }
 ,
     {
+      "filename": "hexavera-dashboard-charts-630x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts-630x630.webp",
+      "size": 11248
+    }
+,
+    {
       "filename": "hexavera-dashboard-charts.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/hexavera-dashboard-charts.webp",
       "size": 26408
@@ -210,6 +258,12 @@
       "filename": "workforce-assessment-dashboard-with-absent-rate-kpi-630x315.webp",
       "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi-630x315.webp",
       "size": 24050
+    }
+,
+    {
+      "filename": "workforce-assessment-dashboard-with-absent-rate-kpi-630x630.webp",
+      "url": "https://cdn.jsdelivr.net/gh/obrana-boranija/hexavera-blog@main/Content/Images/Processed/workforce-assessment-dashboard-with-absent-rate-kpi-630x630.webp",
+      "size": 35288
     }
 ,
     {
