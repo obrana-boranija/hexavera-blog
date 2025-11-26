@@ -85,19 +85,10 @@ Q3 and Q4 financial guidance moves from ±8–12% variance to ±2–4% precision
 
 **For the COO:** Forecasted cost pressure cascades into production scheduling, headcount planning, and capital allocation timing. Predictability across finance and operations improves decision quality.
 
-## Assertive Executive CTA
-
-**Request Executive Briefing** to review your organization's current labor forecasting maturity and identify the 3–4 data integration points that unlock predictive capability.
-
-**Benchmark Scheduling Accuracy** against regional manufacturing standards. Most facilities operate at 15–18% forecasting accuracy. Industry leaders operate at 28–35%.
-
----
-
-## Visuals Referenced
-- **Visual 4** (Area chart): Projected vs. actual labor costs over 12 months — shows stable forecast vs. actual performance
-- **Visual 2** (Scatter plot): Forecasting accuracy vs. margin stability — demonstrates correlation between prediction precision and financial control
-- **Visual 18** (Line chart): Forecasting accuracy vs. margin stability over time — shows improvement trajectory when predictive models are implemented
-
-## LinkedIn Executive Snippet
-
-Workforce forecasting is not a data science exercise. It is a strategic advantage. Organizations forecasting labor cost within ±2–4% accuracy maintain margin discipline within 3–5% variance. Those relying on historical actuals accept 15–25% monthly swings. The difference is not sophistication. It is integration. When scheduling, absence, and turnover data align in real-time, tomorrow's labor cost becomes knowable today. [LINK]
+> **Request Executive Briefing**
+>
+> Review your organization's current labor forecasting maturity and identify the 3–4 data integration points that unlock predictive capability.
+>
+> **Benchmark Scheduling Accuracy**
+>
+> Compare your forecasting accuracy against regional manufacturing standards. Most facilities operate at 15–18% accuracy. Industry leaders operate at 28–35%. The gap represents margin opportunity.

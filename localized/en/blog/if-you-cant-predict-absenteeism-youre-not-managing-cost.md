@@ -89,9 +89,15 @@ Organizations achieving these outcomes share one capability: absence patterns ar
 
 ## Assertive Executive CTA
 
-**Analyze your absence data for the last 12 months. Calculate absence rate by department, day-of-week, and season. The clustering you observe—that is your predictable variance. Absence is not random. Organizations treat it as random because they lack visibility into the pattern.**
-
 **Request an absence forecasting briefing. Map your historical absence against labor cost variance and production disruptions. Quantify what reactive overtime costs when absences are unforecasted versus what proactive planning costs when absences are predictable. The financial case will clarify urgency.**
+
+> **Analyze Your Absence Data**
+>
+> Examine your absence data for the last 12 months. Calculate absence rate by department, day-of-week, and season. The clustering you observe—that is your predictable variance. Absence is not random. Organizations treat it as random because they lack visibility into the pattern.
+>
+> **Request Absence Forecasting Analysis**
+>
+> Map your historical absence against labor cost variance and production disruptions. Quantify what reactive overtime costs when absences are unforecasted versus what proactive planning costs when absences are predictable. The financial case will clarify urgency.
 
 ---
 
