@@ -30,8 +30,8 @@ Executives observe absence as a labor discipline or data integrity problem. Fina
 <chart type="heatmap" 
        title="Absenteeism Frequency by Department and Day"
        caption="Absence patterns cluster by department and day. Predictable patterns drive controllable costs."
-       x-labels="['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']"
-       y-labels="['Assembly', 'Packaging', 'Quality', 'Maintenance', 'Support']"
+       x-labels="[&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;]"
+       y-labels="[&quot;Assembly&quot;, &quot;Packaging&quot;, &quot;Quality&quot;, &quot;Maintenance&quot;, &quot;Support&quot;]"
        data="[[3, 5, 2, 4, 6], [2, 3, 2, 2, 5], [1, 2, 1, 3, 4], [4, 6, 3, 5, 7], [2, 4, 1, 3, 5]]" />
 
 ## Exposure Profile: Three Cost Drivers from Absence Blindness
@@ -75,7 +75,7 @@ Organizations achieving these outcomes share one capability: absence patterns ar
 <chart type="line"
        title="Absenteeism Trends with Cost Overlay"
        caption="Absence visibility eliminates reactive cost escalation."
-       x-labels="['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6']"
+       x-labels="[&quot;Week 1&quot;, &quot;Week 2&quot;, &quot;Week 3&quot;, &quot;Week 4&quot;, &quot;Week 5&quot;, &quot;Week 6&quot;]"
        y-label="Premium Hours"
        data="[28, 32, 25, 18, 15, 12]" />
 
