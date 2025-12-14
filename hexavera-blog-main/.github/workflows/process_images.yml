@@ -1,0 +1,306 @@
+name: Process Images
+
+on:
+  push:
+    paths:
+      - 'Content/Images/**'
+      - '!Content/Images/Processed/**'
+  workflow_dispatch: # Allow manual triggering
+
+permissions:
+  contents: write  # This grants write permissions to the repository
+
+env:
+  # Configure your paths here - change these if your directory structure changes
+  IMAGES_DIR: Content/Images
+  PROCESSED_DIR: Content/Images/Processed
+  # Supported formats: jpg, jpeg, png, webp, gif, tiff, avif
+  IMAGE_EXTENSIONS: "jpg|jpeg|png|webp|gif|tiff|tif|avif"
+
+jobs:
+  process-images:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.PAT_TOKEN }}
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install Sharp for image processing
+      run: npm install sharp
+
+    - name: Check initial directory state
+      run: |
+        echo "=== Current directory ==="
+        pwd
+        echo "=== Directory structure ==="
+        echo "Looking for images in: ${{ env.IMAGES_DIR }}"
+        find "${{ env.IMAGES_DIR }}" -type f | grep -E "\.(${{ env.IMAGE_EXTENSIONS }})$" | head -20 || echo "No images found"
+        echo "=== Images directory contents ==="
+        ls -la "${{ env.IMAGES_DIR }}/" || echo "No images directory"
+
+    - name: Process Images
+      run: |
+        node << 'EOF'
+        const sharp = require('sharp');
+        const fs = require('fs');
+        const path = require('path');
+
+        // Configuration from environment variables
+        const imagesDir = './${{ env.IMAGES_DIR }}';
+        const outputDir = './${{ env.PROCESSED_DIR }}';
+        const imageExtensions = '${{ env.IMAGE_EXTENSIONS }}'.split('|');
+
+        const sizes = [
+          { width: 315, height: 315, suffix: '-315x315' },
+          { width: 630, height: 630, suffix: '-630x630' },
+          { width: 630, height: 315, suffix: '-630x315' },
+          { width: 1200, height: 630, suffix: '-1200x630' }
+        ];
+
+        // Build regex pattern from extensions
+        const extensionPattern = new RegExp(`\\.(${imageExtensions.join('|')})$`, 'i');
+
+        async function processImages() {
+          console.log(`Processing images from: ${imagesDir}`);
+          console.log(`Output directory: ${outputDir}`);
+          console.log(`Supported extensions: ${imageExtensions.join(', ')}`);
+          
+          if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, { recursive: true });
+          }
+
+          // Get all files and filter for images
+          const allFiles = fs.readdirSync(imagesDir);
+          console.log('All files in directory:', allFiles);
+          
+          const files = allFiles
+            .filter(file => {
+              // Skip hidden files and directories
+              if (file.startsWith('.')) return false;
+              
+              const filePath = path.join(imagesDir, file);
+              const stat = fs.statSync(filePath);
+              
+              // Skip directories (including 'processed')
+              if (stat.isDirectory()) return false;
+              
+              // Check for image extensions
+              return extensionPattern.test(file);
+            });
+
+          console.log('Filtered image files:', files);
+
+          for (const file of files) {
+            const inputPath = path.join(imagesDir, file);
+            const name = path.parse(file).name;
+            const ext = path.parse(file).ext.toLowerCase();
+
+            try {
+              console.log(`\nProcessing: ${file}`);
+              
+              // First, try to read metadata to validate the image
+              const metadata = await sharp(inputPath).metadata();
+              console.log(`  Format: ${metadata.format}, Size: ${metadata.width}x${metadata.height}`);
+
+              // Skip if already webp and in the main directory (not resizing originals)
+              if (ext === '.webp' && !file.includes('_sm') && !file.includes('_md') && !file.includes('_lg')) {
+                console.log(`  Skipping original WebP file: ${file}`);
+                continue;
+              }
+
+              // For GIFs, we need special handling to preserve animation
+              const isAnimated = metadata.pages && metadata.pages > 1;
+              
+              if (isAnimated) {
+                console.log(`  Animated image detected (${metadata.pages} frames)`);
+                
+                // For animated images, create WebP with animation preserved
+                // Only create original size to preserve animation
+                const originalWebP = path.join(outputDir, `${name}.webp`);
+                await sharp(inputPath, { animated: true })
+                  .webp({ quality: 90 })
+                  .toFile(originalWebP);
+                
+                console.log(`  Created animated WebP: ${originalWebP}`);
+                
+                // For resized versions, take the first frame only
+                for (const size of sizes) {
+                  const outputPath = path.join(outputDir, `${name}${size.suffix}.webp`);
+                  
+                  await sharp(inputPath, { pages: 1 }) // First frame only
+                    .resize(size.width, size.height, { 
+                      fit: 'cover',
+                      position: 'center'
+                    })
+                    .webp({ quality: 85 })
+                    .toFile(outputPath);
+
+                  console.log(`  Created (first frame): ${outputPath}`);
+                }
+              } else {
+                // Regular image processing for non-animated images
+                // Create WebP versions in different sizes
+                for (const size of sizes) {
+                  const outputPath = path.join(outputDir, `${name}${size.suffix}.webp`);
+                  
+                  await sharp(inputPath)
+                    .resize(size.width, size.height, { 
+                      fit: 'cover',
+                      position: 'center'
+                    })
+                    .webp({ quality: 85 })
+                    .toFile(outputPath);
+
+                  console.log(`  Created: ${outputPath}`);
+                }
+
+                // Create original size WebP
+                const originalWebP = path.join(outputDir, `${name}.webp`);
+                await sharp(inputPath)
+                  .webp({ quality: 90 })
+                  .toFile(originalWebP);
+                
+                console.log(`  Created: ${originalWebP}`);
+              }
+              
+            } catch (error) {
+              console.error(`Failed to process ${file}:`, error.message);
+              console.error(`Full error:`, error);
+              // Continue with other images even if one fails
+            }
+          }
+        }
+
+        processImages().catch(console.error);
+        EOF
+
+    - name: Check processed images
+      run: |
+        echo "=== Checking ${{ env.IMAGES_DIR }} directory ==="
+        ls -la "${{ env.IMAGES_DIR }}/" || echo "No images directory found"
+        
+        echo "=== Checking processed directory ==="
+        if [ -d "${{ env.PROCESSED_DIR }}" ]; then
+          ls -la "${{ env.PROCESSED_DIR }}/"
+          echo "Total processed files: $(find "${{ env.PROCESSED_DIR }}" -type f | wc -l)"
+        else
+          echo "Processed directory does not exist!"
+        fi
+
+    - name: Create image manifest
+      run: |
+        if [ -d "${{ env.PROCESSED_DIR }}" ]; then
+          echo "Creating image manifest..."
+          
+          # Get current date
+          GENERATED_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          
+          # Start JSON manifest
+          cat > "${{ env.PROCESSED_DIR }}/manifest.json" << EOF
+        {
+          "generated": "$GENERATED_DATE",
+          "baseUrl": "https://cdn.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/${{ env.PROCESSED_DIR }}/",
+          "images": [
+        EOF
+          
+          # Add each image to the manifest
+          first=true
+          for file in "${{ env.PROCESSED_DIR }}"/*.webp; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo "0")
+              
+              if [ "$first" = true ]; then
+                first=false
+              else
+                echo "," >> "${{ env.PROCESSED_DIR }}/manifest.json"
+              fi
+              
+              cat >> "${{ env.PROCESSED_DIR }}/manifest.json" << EOF
+            {
+              "filename": "$filename",
+              "url": "https://cdn.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/${{ env.PROCESSED_DIR }}/$filename",
+              "size": $size
+            }
+        EOF
+            fi
+          done
+          
+          # Close JSON
+          cat >> "${{ env.PROCESSED_DIR }}/manifest.json" << EOF
+          ]
+        }
+        EOF
+          
+          # Create markdown manifest
+          cat > "${{ env.PROCESSED_DIR }}/README.md" << EOF
+        # Processed Images
+        
+        Generated: $GENERATED_DATE
+        
+        ## Available Images
+        
+        | Image | Size | CDN URL |
+        |-------|------|---------|
+        EOF
+          
+          for file in "${{ env.PROCESSED_DIR }}"/*.webp; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo "0")
+              size_kb=$(echo "scale=2; $size / 1024" | bc 2>/dev/null || echo "$((size / 1024)) KB")
+              url="https://cdn.jsdelivr.net/gh/${{ github.repository }}@${{ github.ref_name }}/${{ env.PROCESSED_DIR }}/$filename"
+              
+              echo "| $filename | ${size_kb} KB | [Link]($url) |" >> "${{ env.PROCESSED_DIR }}/README.md"
+            fi
+          done
+          
+          echo "Created manifest files"
+          
+          # Validate JSON
+          if command -v jq >/dev/null 2>&1; then
+            echo "Validating JSON manifest..."
+            jq . "${{ env.PROCESSED_DIR }}/manifest.json" > /dev/null && echo "JSON is valid" || echo "JSON validation failed"
+          fi
+        fi
+
+    - name: Commit processed images
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Check if there are any changes to commit
+        git add "${{ env.PROCESSED_DIR }}/"
+        
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          echo "Changes detected, committing..."
+          git commit -m "Auto-process images and update manifest [skip ci]"
+          git push
+          echo "Changes pushed successfully"
+        fi
+        
+    - name: Summary
+      if: always()
+      run: |
+        echo "=== Workflow Summary ==="
+        echo "Repository: ${{ github.repository }}"
+        echo "Branch: ${{ github.ref_name }}"
+        echo "Commit: ${{ github.sha }}"
+        echo "Images directory: ${{ env.IMAGES_DIR }}"
+        echo "Processed directory: ${{ env.PROCESSED_DIR }}"
+        
+        if [ -d "${{ env.PROCESSED_DIR }}" ]; then
+          echo "Processed images created: $(find "${{ env.PROCESSED_DIR }}" -type f -name "*.webp" | wc -l)"
+          echo "Files:"
+          find "${{ env.PROCESSED_DIR }}" -type f -name "*.webp" | head -10
+        else
+          echo "No processed directory created"
+        fi
