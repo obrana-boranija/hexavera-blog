@@ -8,6 +8,7 @@ categories: ["Cost Management", "Workforce Analytics", "HR Strategy"]
 tags: ["Absenteeism Impact", "Premium Pay", "Cascade Effects", "Labor Cost", "Workforce Planning"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Absence creates a coverage gap. Coverage gaps trigger premium allocations. Premium allocations cascade through authorization chains. Organizations treating absence as a coverage problem undercount the true financial impact by 3–5x. The visible gap obscures the cascading cost.

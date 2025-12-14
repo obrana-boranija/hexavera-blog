@@ -8,6 +8,7 @@ categories: ["Compensation Strategy", "Cost Management", "HR Strategy"]
 tags: ["Incentive Design", "Overtime Management", "Cost Control", "Compensation Alignment", "Behavioral Economics"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Compensation structures designed for one outcome often create unintended incentives for another. Organizations experiencing persistent overtime patterns frequently discover compensation design—not workload—driving the behavior. Incentive realignment typically reduces unnecessary overtime by 25–40%.

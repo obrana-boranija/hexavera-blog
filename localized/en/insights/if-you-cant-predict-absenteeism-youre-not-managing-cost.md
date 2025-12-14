@@ -8,6 +8,7 @@ categories: ["Workforce Analytics", "Risk Management", "Operations"]
 tags: ["Absenteeism", "Predictive Analytics", "Labor Cost", "Workforce Planning", "Cost Control"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Absenteeism patterns are not random. Department, day-of-week, and seasonal trends are measurable and predictable. Organizations without absence forecasting treat gaps as surprises requiring reactive premium overtime. Predictive absence models enable proactive scheduling 24–48 hours ahead. CFOs reduce uncontrolled labor cost variance by 18–32%. Absence forecasting converts a cost liability into a planning input.

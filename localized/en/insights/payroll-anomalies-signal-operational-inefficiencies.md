@@ -8,6 +8,7 @@ categories: ["Financial Planning", "Operations", "Data Analytics"]
 tags: ["Anomaly Detection", "Cost Control", "Operational Signals", "Payroll Analysis", "Early Warning"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Payroll data contains operational intelligence. Anomalies in labor cost patterns signal upstream process failures before those failures appear in production metrics. Organizations monitoring payroll for operational signals detect inefficiencies 2–4 weeks earlier than traditional operational reviews. The financial system becomes an early warning infrastructure.

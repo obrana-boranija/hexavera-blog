@@ -8,6 +8,7 @@ categories: ["Cost Management", "Operations", "Workforce Planning"]
 tags: ["Premium Pay", "Overtime Drift", "Reactive Scheduling", "Labor Cost", "Cost Control"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Unplanned premium pay consistently represents 12–18% of total labor cost variance. Modern manufacturers eliminate this expense category through predictive workforce models that anticipate staffing requirements before reactive coverage becomes necessary.

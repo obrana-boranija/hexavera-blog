@@ -8,6 +8,7 @@ categories: ["Data Quality", "Operations", "Technology"]
 tags: ["Data Fragmentation", "System Integration", "Operational Stability", "Data Consistency", "Technology Architecture"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Workforce volatility metrics (turnover, absenteeism, skill gaps) fluctuate wildly in financial reporting. Operational reality is stable. The gap is data fragmentation. Workforce data lives in 4–6 systems (HRIS, timekeeping, absence tracking, payroll, MES, scheduling). No integration means no consistent view. Each system reports different numbers. Finance and Operations see instability where none exists operationally.

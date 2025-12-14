@@ -8,6 +8,7 @@ categories: ["Compliance", "Governance", "Risk Management"]
 tags: ["Audit Preparation", "Documentation Quality", "Regulatory Compliance", "Data Integrity", "Governance"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Regulatory review finds what manual systems miss. Attendance documentation gaps create audit exposure that isn't visible until auditors ask for evidence.

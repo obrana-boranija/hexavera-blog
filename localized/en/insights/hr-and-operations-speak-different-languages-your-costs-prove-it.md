@@ -8,6 +8,7 @@ categories: ["Organizational Alignment", "Operations", "HR Strategy"]
 tags: ["Cross-functional Collaboration", "Data Silos", "Cost Impact", "Organizational Structure", "Operational Integration"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 HR manages workforce through people-centric metrics (hiring, training, retention, compliance). Operations manages through output-centric metrics (throughput, efficiency, variance). These functions don't share real-time data. The gap creates decision misalignment costing 8–16% of monthly labor spend. CFO sees only the financial consequence; COO and CHRO see only their functional necessity.

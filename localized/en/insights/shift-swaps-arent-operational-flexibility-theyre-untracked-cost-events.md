@@ -8,6 +8,7 @@ categories: ["Cost Management", "Operations", "Workforce Planning"]
 tags: ["Shift Management", "Hidden Costs", "Cost Tracking", "Labor Variance", "Operational Control"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Shift swaps appear to be operational flexibility. They're actually untracked cost events that compound monthly labor variance by 3–7%. Informal adjustments bypass authorization workflows, creating accounting gaps that distort labor reporting and financial planning accuracy.

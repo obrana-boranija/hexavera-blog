@@ -8,6 +8,7 @@ categories: ["Strategic Planning", "Enterprise Risk", "Operations"]
 tags: ["Organizational Resilience", "Strategic Risk", "Workforce Stability"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Workforce predictability enables enterprise resilience. Data latency fractures that predictability. Organizations with real-time workforce visibility reduce operational disruption by 22–35%.

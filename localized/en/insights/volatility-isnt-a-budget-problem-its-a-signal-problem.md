@@ -8,6 +8,7 @@ categories: ["Financial Planning", "Data Quality", "Operations"]
 tags: ["Volatility", "Reporting", "Data Integrity", "Cost Variance", "Signal Detection"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Apparent labor cost volatility rarely reflects operational swings. Most perceived variance originates in reporting delays, system fragmentation, and asynchronous data arrival. Board members and CFOs confuse data latency problems with operational problems—requiring different solutions.

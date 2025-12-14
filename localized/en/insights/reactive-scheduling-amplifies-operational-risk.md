@@ -8,6 +8,7 @@ categories: ["Risk Management", "Operations", "Workforce Planning"]
 tags: ["Reactive Management", "Operational Risk", "Decision Quality", "Cascading Risk", "Emergency Response"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Reactive scheduling decisions create 3–5x the operational risk of planned adjustments. Emergency coverage cascades into quality variance, compliance exposure, and margin erosion. Organizations averaging 8–12 reactive decisions weekly accumulate structural operational vulnerability.

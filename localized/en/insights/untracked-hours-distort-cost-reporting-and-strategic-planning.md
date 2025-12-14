@@ -8,6 +8,7 @@ categories: ["Financial Planning", "Workforce Analytics", "Risk Management"]
 tags: ["Data Completeness", "Cost Accuracy", "Strategic Risk", "Hidden Costs", "Reporting Accuracy"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Tracked hours represent 82–92% of actual workforce activity. The untracked 8–18% distorts cost reporting, inflates month-end variance, and undermines strategic planning accuracy. Organizations making investment decisions on incomplete data compound exposure with every strategic choice.

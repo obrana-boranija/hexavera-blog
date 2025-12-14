@@ -8,6 +8,7 @@ categories: ["Technology Integration", "Manufacturing", "Operations"]
 tags: ["System Integration", "Production Efficiency", "Downtime Analysis", "Data Synchronization", "Operational Risk"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Production floor downtime appears operational. It is actually a data problem.

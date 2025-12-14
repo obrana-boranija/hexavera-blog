@@ -8,6 +8,7 @@ categories: ["Workforce Planning", "Operations", "Predictive Analytics"]
 tags: ["Gap Analysis", "Cumulative Risk", "Preventive Planning", "Predictive Models", "Cost Prevention"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Coverage gaps addressed reactively cost 3–5x more than gaps prevented proactively. Predictive models detecting gaps 24–72 hours in advance enable prevention at 15–25% of reactive cost. The economics favor prediction; most organizations lack the visibility to execute.

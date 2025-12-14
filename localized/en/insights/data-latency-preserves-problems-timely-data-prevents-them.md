@@ -8,6 +8,7 @@ categories: ["Technology", "Operations", "Data Quality"]
 tags: ["Data Timeliness", "Problem Prevention", "Real-time Intelligence", "Prevention Economics", "Decision Quality"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Delayed data arrives after decisions have been made. By the time yesterday's workforce data reaches today's manager, today's problems have already cascaded. Organizations operating on 24–72 hour data latency spend 60–75% more on problem response than organizations with real-time visibility. The latency cost is not the data delay; it is the prevention opportunity lost.

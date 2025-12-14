@@ -8,6 +8,7 @@ categories: ["Operations", "Workforce Planning", "Manufacturing"]
 tags: ["Production Planning", "Bottleneck Analysis", "Staffing Strategy", "Leading Indicators", "Throughput Optimization"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Production bottlenecks appear operational. Root cause analysis reveals 40–65% originate in staffing gaps detectable 2–4 shifts before throughput impact. Workforce visibility provides the leading indicator; production metrics provide the lagging confirmation.

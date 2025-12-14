@@ -8,6 +8,7 @@ categories: ["Technology Integration", "Operations", "Manufacturing"]
 tags: ["System Integration", "Data Synchronization", "SCADA", "MES Integration", "Production Planning"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Manufacturing leaders misdiagnose data synchronization failures as scheduling failures. MES/SCADA systems execute production accurately. HRIS and payroll systems track workforce accurately. But the two operate asynchronously. The gap between operational reality and reported staffing creates the illusion that scheduling failed. The scheduling was fine—the data architecture wasn't.

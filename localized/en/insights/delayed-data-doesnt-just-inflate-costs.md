@@ -8,6 +8,7 @@ categories: ["Financial Planning", "Operations", "Data Quality"]
 tags: ["Cost Escalation", "Data Latency", "Compound Effects", "Operational Efficiency", "Cost Analysis"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Data latency compounds costs exponentially. One absence notification delayed 8 hours triggers 3–5 emergency responses (scheduling adjustment, coverage authorization, premium rate, payroll processing, reconciliation). Each step costs incrementally. By month-end, 8-hour lag on 60 absences per month creates 180–300 compound cost escalations. Total impact: 8–14% of monthly labor spend from pure data latency, not operational necessity.

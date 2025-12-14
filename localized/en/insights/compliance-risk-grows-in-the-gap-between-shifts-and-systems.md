@@ -8,6 +8,7 @@ categories: ["Compliance", "Risk Management", "HR Strategy"]
 tags: ["Regulatory Risk", "Documentation", "System Compliance", "Audit Readiness", "Governance"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Manual workforce documentation creates compliance exposure. Auditors find gaps between shifts and records.

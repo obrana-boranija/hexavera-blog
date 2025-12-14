@@ -8,6 +8,7 @@ categories: ["Risk Management", "Strategic Planning", "Workforce Analytics"]
 tags: ["Risk Quantification", "Early Warning Systems", "Strategic Risk", "Workforce Stability", "Enterprise Risk"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Workforce risks compound silently until they create operational disruption. Absence patterns escalate to permanent attrition. Skill gaps compound to capability collapse. Schedule instability cascades to quality incidents. Organizations implementing predictive workforce intelligence detect risk escalation 4–8 weeks in advance, enabling intervention before disruption occurs. Risk mitigation becomes proactive prevention instead of reactive crisis management.

@@ -8,6 +8,7 @@ categories: ["Operations", "Cost Management", "Data Quality"]
 tags: ["Decision Timing", "Cost Escalation", "Data Timeliness", "Emergency Response", "Shift Coverage"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Last-minute shift coverage decisions are expensive. Last-minute data is worse. When supervisors discover coverage gaps with 2–4 hours before shift start and lack current absence/skill data, premium pay escalation becomes 3–5x normal rate. Organizations with real-time workforce visibility reduce last-minute premium escalation by 70–85% through early problem detection and systematic response options.

@@ -8,6 +8,7 @@ categories: ["Manufacturing", "Financial Planning", "Data Quality"]
 tags: ["Production Planning", "Reporting Accuracy", "Data Synchronization", "Labor Reporting", "Operational Metrics"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Production output follows predictable patterns. Labor reporting lags output by 24–48 hours, creating synchronization gaps that inflate perceived labor variance by 18–32%. Operations run at steady state; finance reports show volatility. Data latency between MES and HRIS systems masks operational stability.

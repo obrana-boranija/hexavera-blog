@@ -8,6 +8,7 @@ categories: ["Cost Management", "Operations", "Workforce Planning"]
 tags: ["Premium Pay Analysis", "Scheduling Efficiency", "Cost Control", "Labor Economics", "Operational Planning"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Premium pay absorbs 8–14% of monthly labor budgets in most manufacturing operations. Yet executives rarely distinguish between legitimate flexibility costs and pure planning failure. The difference is measurable, quantifiable, and preventable.

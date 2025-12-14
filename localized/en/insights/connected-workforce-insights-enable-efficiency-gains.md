@@ -8,6 +8,7 @@ categories: ["Technology Integration", "Operations", "Enterprise Systems"]
 tags: ["System Integration", "Efficiency Optimization", "Data Connectivity", "Workforce Intelligence", "Cross-functional Data"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Disconnected systems create disconnected decisions. HR manages headcount in isolation. Operations manages scheduling without workforce context. Finance reconciles after the fact. Connected workforce insights enable coordinated decisions across functions, producing 15–25% efficiency improvement. Integration is not a technology project; it is an operational capability investment.

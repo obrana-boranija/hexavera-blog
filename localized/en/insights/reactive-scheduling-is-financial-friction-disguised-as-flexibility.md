@@ -8,6 +8,7 @@ categories: ["Operations", "Manufacturing", "Cost Management"]
 tags: ["Reactive Scheduling", "Margin Protection", "Operational Efficiency", "Cost Control", "Planning Discipline"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Reactive scheduling appears to offer operational flexibility. In reality, each unplanned shift adjustment triggers cascade effects across payroll, production, and compliance systems. Cumulative friction costs 8–14% of monthly labor spend. Planned scheduling with 48-hour adjustment capability delivers operational flexibility at zero friction cost.

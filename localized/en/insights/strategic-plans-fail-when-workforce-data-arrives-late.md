@@ -8,6 +8,7 @@ categories: ["Strategic Planning", "Enterprise Risk", "Data Quality"]
 tags: ["Strategic Execution", "Data Timeliness", "Decision Support", "Operational Alignment", "Executive Planning"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Strategic execution requires current operational reality. Late workforce data renders strategy decisions obsolete before they're implemented.

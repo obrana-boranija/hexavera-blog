@@ -8,6 +8,7 @@ categories: ["Financial Planning", "Operations", "Data Quality"]
 tags: ["Margin Protection", "Data Integration", "Workforce Intelligence", "Financial Stability", "Operational Excellence"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Predictable workforce drives predictable output drives predictable margins. Data fragmentation breaks this chain at every link.

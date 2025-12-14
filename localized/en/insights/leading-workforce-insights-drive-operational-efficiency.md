@@ -8,6 +8,7 @@ categories: ["Operations", "Technology", "Workforce Analytics"]
 tags: ["Proactive Management", "Leading Indicators", "Operational Excellence", "Decision Quality", "Real-time Intelligence"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Lagging indicators report what happened. Leading indicators predict what will happen. Organizations managing against leading workforce indicators achieve 22–40% better operational outcomes. The transition from reactive to proactive requires visibility infrastructure, not management philosophy change.

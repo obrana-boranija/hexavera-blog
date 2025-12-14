@@ -8,6 +8,7 @@ categories: ["Operations", "Manufacturing", "Workforce Planning"]
 tags: ["Staffing Optimization", "Throughput Analysis", "Ratio Analytics", "Margin Protection", "Operational Excellence"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Staffing ratios determine both throughput capacity and labor cost efficiency. Over-staffing protects output but erodes margins. Under-staffing protects costs but constrains capacity. Organizations calibrating ratios through data achieve 10–18% throughput improvement with 8–14% margin protection simultaneously. Ratio optimization is not a trade-off; it is a calibration exercise.

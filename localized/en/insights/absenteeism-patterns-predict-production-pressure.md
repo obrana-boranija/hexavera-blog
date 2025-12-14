@@ -8,6 +8,7 @@ categories: ["Operations", "Workforce Analytics", "Manufacturing"]
 tags: ["Predictive Analytics", "Production Planning", "Leading Indicators", "Absenteeism Patterns", "Capacity Management"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Absenteeism exhibits predictable patterns that directly correlate with production output variance. Organizations treating absence as random forfeit 4–8 weeks of advance warning. Pattern recognition transforms absence data from reactive coverage problem to proactive capacity planning input.

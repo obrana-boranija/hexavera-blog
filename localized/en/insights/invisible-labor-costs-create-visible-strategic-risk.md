@@ -8,6 +8,7 @@ categories: ["Strategic Planning", "Risk Management", "Cost Management"]
 tags: ["Hidden Costs", "Strategic Risk", "Cost Visibility", "Governance", "Financial Accuracy"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Visible labor costs appear in budget reports. Invisible labor costs appear in strategic risk. Organizations tracking only direct labor expense miss 15–25% of actual workforce cost. That untracked portion erodes margins, distorts pricing, and accumulates into board-level exposure. Invisible costs do not disappear; they compound.

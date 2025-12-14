@@ -8,6 +8,7 @@ categories: ["Organizational Alignment", "Technology", "Cost Management"]
 tags: ["System Integration", "Organizational Silos", "Cost Impact", "Data Connectivity", "Cross-functional Collaboration"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Organizational silos add 8–16% to workforce costs through coordination friction and decision delays. Data silos multiply this by 2–3x through information asymmetry and reconciliation burden. Combined fragmentation inflates labor variance by 18–32% compared to integrated operations.

@@ -8,6 +8,7 @@ categories: ["Strategic Planning", "Cost Management", "Workforce Planning"]
 tags: ["Compound Effects", "Strategic Risk", "Variance Management", "Cumulative Risk", "Budget Accuracy"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 A 3% weekly scheduling variance appears tolerable. That same variance compounding over 13 weeks produces 18–25% quarterly exposure. Organizations treating small misalignments as operational noise accumulate strategic risk invisibly. The compound effect transforms minor planning imprecision into board-level financial exposure.

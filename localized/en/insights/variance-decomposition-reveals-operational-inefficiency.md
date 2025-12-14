@@ -8,6 +8,7 @@ categories: ["Cost Management", "Operations", "Workforce Analytics"]
 tags: ["Root Cause Analysis", "Variance Analysis", "Operational Efficiency", "Cost Control", "Data Quality"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Labor cost variance is not a single problem. It is multiple problems appearing as one number. Decomposition analysis reveals 60–75% of variance originates from 3–5 controllable sources. Organizations treating variance as monolithic miss corrective opportunities worth 18–32% of labor cost reduction.

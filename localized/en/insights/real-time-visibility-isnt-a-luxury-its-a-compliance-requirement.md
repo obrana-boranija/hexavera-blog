@@ -8,6 +8,7 @@ categories: ["Compliance", "Risk Management", "Governance"]
 tags: ["Regulatory Compliance", "Audit Readiness", "Data Timeliness", "Risk Exposure"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Delayed workforce data creates regulatory exposure. Real-time visibility converts compliance from liability to operational advantage. Audit readiness improves 8–19% with integrated workforce monitoring.

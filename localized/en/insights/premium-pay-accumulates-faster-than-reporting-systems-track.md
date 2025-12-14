@@ -8,6 +8,7 @@ categories: ["Cost Management", "Financial Planning", "Operations"]
 tags: ["Premium Pay Tracking", "Cost Recognition", "Financial Control", "Labor Variance", "Payroll Timing"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Premium pay accumulates during shift operations; payroll systems report it 4–8 days later. By month-end close, unrecognized premium pay exceeds forecasts by 2–4%. Finance teams adjust reserves retroactively instead of controlling premium pay proactively. Recognition lag transforms premium pay from operational decision to financial surprise.

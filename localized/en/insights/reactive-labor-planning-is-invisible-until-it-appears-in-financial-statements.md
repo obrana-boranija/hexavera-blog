@@ -8,6 +8,7 @@ categories: ["Financial Planning", "Operations", "Risk Management"]
 tags: ["Reactive Planning", "Financial Impact", "Delayed Recognition", "Budget Variance", "Board Reporting"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Reactive labor planning occurs daily on the production floor. Financial recognition occurs monthly in the CFO's report. The 30-day gap between operational dysfunction and financial visibility ensures that board members discover problems after they have fully materialized. By the time variance appears in statements, intervention opportunity has passed.

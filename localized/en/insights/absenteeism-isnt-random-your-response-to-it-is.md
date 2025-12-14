@@ -8,6 +8,7 @@ categories: ["Workforce Analytics", "Operations", "HR Strategy"]
 tags: ["Absenteeism Patterns", "Predictive Analytics", "Reactive Management"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Absenteeism follows identifiable patterns. Reactive management ignores patterns and responds to surprises. Pattern-based planning reduces absence impact by 14–28% and improves operational reliability.

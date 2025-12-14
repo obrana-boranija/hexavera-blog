@@ -8,6 +8,7 @@ categories: ["Financial Planning", "Cost Management", "Data Quality"]
 tags: ["Cost Reconciliation", "Financial Accuracy", "Budget Variance"]
 is_featured: false
 include_charts: true
+published: false
 ---
 
 Reported labor cost and actual labor cost diverge significantly. Gap ranges 8–18% depending on accounting method. CFO operates with incomplete visibility. Reconciliation eliminates blind spots and enables accurate financial planning.
