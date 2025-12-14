@@ -7,6 +7,7 @@ featured_image: "https://placehold.co/647x350/1e3a5f/ffffff?text=Strategic+Workf
 categories: ["Workforce Planning", "AI/ML Integration", "Human Capital Management", "Research"]
 tags: ["Workforce Analytics", "AI Integration", "Strategic Planning", "HCM", "SaaS Platforms", "Predictive Analytics"]
 is_featured: true
+published: true
 ---
 
 **Јавно | Javno | Public**
