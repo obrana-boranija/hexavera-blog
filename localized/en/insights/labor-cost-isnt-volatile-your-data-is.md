@@ -8,7 +8,7 @@ categories: ["Manufacturing", "Workforce Analytics", "Financial Planning"]
 tags: ["Labor Cost", "Data Quality", "Variance Analysis", "Cost Management", "Financial Accuracy"]
 is_featured: true
 include_charts: true
-published: false
+is_published: false
 ---
 
 Manufacturing labor costs appear volatile because reporting systems capture events hours or days after they occur. Fragmented data sources create reconciliation gaps. Real-time workforce data reveals that underlying labor cost patterns are stable and predictable. Organizations integrating operational data with financial reporting reduce perceived volatility from 18–35% to 2–4%. The volatility is not in the workforce. It is in the visibility.
@@ -86,3 +86,4 @@ For CFOs and boards, labor cost volatility represents financial uncertainty and 
 For COOs and plant managers, labor cost volatility appears as an operational consequence: absent workers, unplanned overtime, shift adjustments. From the operational perspective, variance is real. From the financial perspective, much of the variance is reporting delay, not operational change.
 
 Aligning these two perspectives requires a single, integrated data architecture where operational decisions flow immediately to financial systems. Most organizations lack this integration. Labor costs appear volatile because visibility is fragmented.
+
