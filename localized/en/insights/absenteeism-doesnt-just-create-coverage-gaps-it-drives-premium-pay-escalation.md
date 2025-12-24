@@ -41,7 +41,7 @@ Payroll records overtime hours without linking to originating absence. Premium p
 **Type:** Stacked Bar Chart  
 **Description:** Shows how direct coverage cost represents only 20–30% of total absence impact; cascade costs dominate
 
-```javascript
+<script>
 const absenceCostChart = new Chart(ctx1, {
   type: 'bar',
   data: {
@@ -123,7 +123,7 @@ const absenceCostChart = new Chart(ctx1, {
     }
   }
 });
-```
+</script>
 
 ---
 
@@ -138,7 +138,7 @@ Absence patterns are systematic and measurable. Monday and Friday peaks exceed m
 **Type:** Line Chart  
 **Description:** Earlier absence notification reduces cascade multiplier significantly; 24+ hour notice cuts escalation by 60–75%
 
-```javascript
+<script>
 const cascadeMultiplierChart = new Chart(ctx2, {
   type: 'line',
   data: {
@@ -200,7 +200,7 @@ const cascadeMultiplierChart = new Chart(ctx2, {
     }
   }
 });
-```
+</script>
 
 ### Early Notification Reduces Cascade Multiplier
 
@@ -630,3 +630,4 @@ Absence management is not a human resources function. It is an operational capab
 
 *Author: Dejan Demonjić*  
 *TRIDESETRI | Hexavera Workforce Analytics*
+
